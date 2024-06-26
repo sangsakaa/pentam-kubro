@@ -26,6 +26,7 @@ class DashboardController extends Controller
             // Jika terjadi error, kembalikan response error
             return response()->json(['error' => 'Tidak dapat mengambil data wilayah'], $response->status());
         }
+        return view('dashboard');
     }
     public function getKabupaten($provinceCode)
     {

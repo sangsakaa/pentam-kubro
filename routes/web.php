@@ -19,8 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard',[DashboardController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware(['auth']);
 Route::get('/dashboard/{provinceCode}', [DashboardController::class, 'getKabupaten']);
-Route::post('/rombongan-kubro/kabupaten',[RombonganController::class,'index']);
-
+Route::post('/rombongan-kubro/kabupaten', [RombonganController::class, 'store']);
+Route::get('/form-daftar/{provinceCode}', [RombonganController::class, 'getKabupaten']);
+Route::get('/form-daftar', [RombonganController::class, 'create'])->name('form-daftar');
 require __DIR__.'/auth.php';

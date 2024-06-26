@@ -6,10 +6,11 @@ use Carbon\Carbon;
 use App\Models\Rombongan;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Http;
 
 class RombonganController extends Controller
 {
- public function index(Request $request)
+    public function store(Request $request)
  {
         $request->validate([
             'province' => 'required',
@@ -53,9 +54,38 @@ class RombonganController extends Controller
         $rombongan->tampat_acara = $request->input('tampat_acara');
         $rombongan->saran = $request->input('saran');
         $rombongan->save();
+        return redirect()->back();
+    }
+    public function create()
+    {
+        // dd('ok');
+        $prov = 'https://wilayah.id/api/provinces.json';
 
+        // Menggunakan facade Http untuk melakukan GET request
+        $response = Http::get($prov);
 
-        return redirect('dashboard');
+        // Memastikan response berhasil
+        if ($response->successful()) {
+            $provinces = $response->json()['data'];
 
- }
+            // Mengirim data ke view 'dashboard'
+            return view('admin.rombongan.create', compact('provinces'));
+        } else {
+            // Jika terjadi error, kembalikan response error
+            return response()->json(['error' => 'Tidak dapat mengambil data wilayah'], $response->status());
+        }
+        return view('admin.rombongan.create');
+    }
+    public function getKabupaten($provinceCode)
+    {
+        $kab = "https://wilayah.id/api/regencies/{$provinceCode}.json";
+
+        $response = Http::get($kab);
+
+        if ($response->successful()) {
+            return response()->json($response->json()['data']);
+        } else {
+            return response()->json(['error' => 'Tidak dapat mengambil data kabupaten'], $response->status());
+        }
+    }
 }

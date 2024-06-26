@@ -18,11 +18,16 @@ class CreateRombongansTable extends Migration
             $table->string('kode_pendaftaran');
             $table->string('nama')->nullable();
             $table->integer('jumlah_peserta')->nullable();
+            $table->integer('jumlah_peserta_remaja')->nullable();
+            $table->integer('jumlah_peserta_kanak')->nullable();
+            $table->integer('jumlah_peserta_ibu')->nullable();
+            $table->integer('jumlah_peserta_bapak')->nullable();
             $table->string('province');
             $table->string('kabupaten');
             $table->string('gelombang_acara')->nullable();
             $table->string('tampat_acara')->nullable();
             $table->string('saran')->nullable();
+            $table->date('tanggal_berangkat')->nullable();
             $table->timestamps();
         });
     }

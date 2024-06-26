@@ -45,11 +45,15 @@ class RombonganController extends Controller
         $rombongan->province = $request->input('province');
         $rombongan->kabupaten = $request->input('kabupaten');
         $rombongan->nama = $request->input('nama');
-        $rombongan->jumlah_peserta = $request->input('jumlah_peserta');
-        $rombongan->gelombang_acara = $request->input('gelombang_acara');
+        $rombongan->jumlah_peserta_remaja = $request->input('jumlah_peserta_remaja');
+        $rombongan->jumlah_peserta_kanak = $request->input('jumlah_peserta_kanak');
+        $rombongan->jumlah_peserta_ibu = $request->input('jumlah_peserta_ibu');
+        $rombongan->jumlah_peserta_bapak = $request->input('jumlah_peserta_bapak');
+        $rombongan->gelombang_acara = json_encode($request->input('gelombang_acara')); // Simpan sebagai JSON string
         $rombongan->tampat_acara = $request->input('tampat_acara');
         $rombongan->saran = $request->input('saran');
         $rombongan->save();
+
 
         return redirect('dashboard');
 

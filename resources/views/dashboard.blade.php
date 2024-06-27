@@ -15,6 +15,7 @@
               <tr class=" border">
                 <th>kode Pendaftar</th>
                 <th>Ketua Rombongan</th>
+                <th>Gelombang</th>
                 <th>Provinsi - Kota / Kabupaten</th>
                 <th>Bapak-Bapak</th>
                 <th>Ibu-Ibu</th>
@@ -27,6 +28,7 @@
               @foreach($grafikPeserta as $peserta)
               <tr class=" border">
                 <td class=" text-center">{{ $peserta->kode_pendaftaran }}</td>
+                <td class=" text-center">{{ $peserta->gelombang_acara }}</td>
                 <td class=" text-left capitalize">{{ $peserta->nama}}</td>
                 <td class=" text-center">
                   {{ $peserta->province_name }} <br>

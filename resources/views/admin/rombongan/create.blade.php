@@ -48,7 +48,7 @@
                 <option value="Kereta Api">Kereta Api</option>
                 <option value="Pesawat">Pesawat</option>
                 <option value="Sepeda Motor">Sepeda Motor</option>
-                <option value="Elf">Elf</option>
+                <option value="Pic Up">Pic Up</option>
               </select>
               <div>
                 <label for="">Pilih Gelombang Yang ikuti</label>

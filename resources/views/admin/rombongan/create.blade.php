@@ -38,20 +38,15 @@
               <div class=" grid-cols-3 grid">
                 <input type="checkbox" name="gelombang_acara[]" id="gelombang1" value="Khodimul">
                 <label for="gelombang1">Gelombang 1 Khodimul</label><br>
-
                 <input type="checkbox" name="gelombang_acara[]" id="gelombang2" value="Ibu-Ibu">
                 <label for="gelombang2">Gelombang 2 Ibu-Ibu</label><br>
-
                 <input type="checkbox" name="gelombang_acara[]" id="gelombang3" value="Remaja">
                 <label for="gelombang3">Gelombang 3 Remaja</label><br>
-
                 <input type="checkbox" name="gelombang_acara[]" id="gelombang4" value="Kanak-Kanak">
                 <label for="gelombang4">Gelombang 4 Kanak-Kanak</label><br>
-
                 <input type="checkbox" name="gelombang_acara[]" id="gelombang5" value="Bapak-Bapak">
                 <label for="gelombang5">Gelombang 5 Bapak-Bapak</label><br>
               </div>
-
               <textarea name="sarat" id="" placeholder="saran"></textarea>
             </div>
             <button class=" bg-purple-700 text-white px-2 py-1" type="submit">Daftar Calon Peserta</button>

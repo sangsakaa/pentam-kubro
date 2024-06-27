@@ -83,7 +83,7 @@
             </thead>
             <tbody>
               @foreach($grafikPeserta as $peserta)
-              <tr class=" border even:bg-gray-100">
+              <tr class=" hover:bg-green-200 border even:bg-gray-100">
 
                 <td class=" border text-center">
                   {{ $peserta->gelombang_acara }}

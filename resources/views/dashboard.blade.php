@@ -53,8 +53,9 @@
                     }]
                   },
                   options: {
+                    indexAxis: 'y', // Mengatur sumbu y sebagai sumbu utama
                     scales: {
-                      y: {
+                      x: { // Mengubah sumbu x menjadi horizontal
                         beginAtZero: true
                       }
                     }
@@ -62,6 +63,7 @@
                 });
               });
             </script>
+
           </div>
           <table class=" w-full">
             <thead>

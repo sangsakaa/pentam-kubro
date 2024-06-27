@@ -9,6 +9,60 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-12">
+          <div>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <canvas id="myChart" width="400" height="200"></canvas>
+
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                // Data dari PHP
+                const grafikPeserta = @json($grafikPeserta);
+
+                // Data yang akan digunakan dalam Chart.js
+                const labels = [];
+                const data = [];
+
+                grafikPeserta.forEach(peserta => {
+                  const province = peserta.province_name;
+                  const totalPeserta = peserta.jumlah_peserta_kanak +
+                    peserta.jumlah_peserta_remaja +
+                    peserta.jumlah_peserta_ibu +
+                    peserta.jumlah_peserta_bapak;
+
+                  if (labels.includes(province)) {
+                    const index = labels.indexOf(province);
+                    data[index] += totalPeserta;
+                  } else {
+                    labels.push(province);
+                    data.push(totalPeserta);
+                  }
+                });
+
+                // Konfigurasi Chart.js
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: labels,
+                    datasets: [{
+                      label: 'Jumlah Peserta',
+                      data: data,
+                      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                      borderColor: 'rgba(54, 162, 235, 1)',
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    scales: {
+                      y: {
+                        beginAtZero: true
+                      }
+                    }
+                  }
+                });
+              });
+            </script>
+          </div>
 
           <table class=" w-full">
             <thead>
@@ -33,7 +87,6 @@
 
                 <td class=" border text-center">
                   {{ $peserta->gelombang_acara }}
-
                 </td>
                 <td class=" border text-left capitalize px-2">{{ $peserta->nama}}</td>
                 <td class=" border text-center">

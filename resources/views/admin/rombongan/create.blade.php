@@ -10,15 +10,32 @@
         <div class="px-2 py-2">
           <div>
             <style>
-              h1 {
-                background-color: green;
+              .h1 {
+                background-color: rgba(7, 75, 36, 255);
               }
             </style>
-
           </div>
-          <h1 class=" text-2xl  px-4 py-2 text-white">
-            Form Pendaftaran <br>
-            Peserta Kubro</h1>
+          <div class="h1  px-4 py-2 text-white  flex grid-cols-1">
+            <div>
+              <img src="{{ asset('img/logo.png') }}" height="100px" width="100px" alt="Example Image">
+            </div>
+            <div>
+              Pendaftaran Online
+              Peserta Mujahadah Kubro <br>
+              Muharram 1446
+            </div>
+          </div>
+          <div class=" grid">
+            <p class=" grid justify-text">
+              <center>
+                Selamat datang jama'ah Mujahadah Kubro, <br>
+                silahkan lakukan pengisian pendaftaran peserta dengan benar di bawah ini : <br>
+              </center>
+              NB : *berikan saran kepada panitia terhadap pelayanan dan fasilitas yang ada
+              *setelah pengisian peserta wajib mengambil kartu peserta di panitia dengan bukti formulir pendaftaran online
+              •⁠ ⁠setelah pendaftaran wajib mengambil kartu peserta di stand penerimaan tamu
+            </p>
+          </div>
           <form action="/rombongan-kubro/kabupaten" method="post">
             @csrf
             <div class=" grid grid-cols-1 gap-2 py-2">

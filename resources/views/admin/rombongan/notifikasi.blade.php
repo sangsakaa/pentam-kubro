@@ -10,7 +10,7 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-12">
           <style>
-            h1 {
+            .h1 {
               background-color: rgba(7, 75, 36, 255);
             }
           </style>

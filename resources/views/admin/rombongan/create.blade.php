@@ -9,6 +9,14 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-12">
+          <div>
+            @if (session('success'))
+            <div class=" bg-green-500 text-black">
+              {{ session('success') }}
+            </div>
+            @endif
+
+          </div>
           <form action="/rombongan-kubro/kabupaten" method="post">
             @csrf
             <h1>Form Pendaftaran Calon Peserta Kubro</h1>
@@ -16,13 +24,7 @@
               <label for="">
                 Tanggal Berangkat
               </label>
-              <input type="date" name="tanggal_berangkat" placeholder=" tanggal_berangkat ketua rombongan">
-              <input type="text" name="tempat_acara" placeholder=" tempat_acara rombongan">
               <input type="text" name="nama" placeholder=" nama ketua rombongan">
-              <input type="number" name="jumlah_peserta_remaja" placeholder=" jumlah_peserta_remaja">
-              <input type="number" name="jumlah_peserta_bapak" placeholder=" jumlah_peserta_bapak">
-              <input type="number" name="jumlah_peserta_kanak" placeholder=" jumlah_peserta_kanak">
-              <input type="number" name="jumlah_peserta_ibu" placeholder=" jumlah_peserta_ibu">
               <select id="provinsi" name="province">
                 <option value="">Pilih Provinsi</option>
                 @foreach($provinces as $province)
@@ -32,6 +34,13 @@
               <select id="kabupaten" name="kabupaten" disabled>
                 <option value="">Pilih Kabupaten</option>
               </select>
+
+              <input type="text" name="tempat_acara" placeholder=" Tempat Transit">
+              <input type="number" name="jumlah_peserta_bapak" placeholder=" jumlah_peserta_bapak">
+              <input type="number" name="jumlah_peserta_ibu" placeholder=" jumlah_peserta_ibu">
+              <input type="number" name="jumlah_peserta_remaja" placeholder=" jumlah_peserta_remaja">
+              <input type="number" name="jumlah_peserta_kanak" placeholder=" jumlah_peserta_kanak">
+              <input type="date" name="tanggal_berangkat" placeholder=" tanggal_berangkat ketua rombongan">
               <select name="kendaraan" id="">
                 <option value="">Pilih Kendaran</option>
                 <option value="Mobil">Mobil</option>

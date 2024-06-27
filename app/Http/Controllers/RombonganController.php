@@ -56,7 +56,7 @@ class RombonganController extends Controller
         $rombongan->kendaraan = $request->input('kendaraan');
         $rombongan->tanggal_berangkat = $request->input('tanggal_berangkat');
         $rombongan->save();
-        return redirect()->back();
+        return redirect('admin.rombongan.notifikasi')->with('success', 'pengisian berhasil');
     }
     public function create()
     {
@@ -89,5 +89,9 @@ class RombonganController extends Controller
         } else {
             return response()->json(['error' => 'Tidak dapat mengambil data kabupaten'], $response->status());
         }
+    }
+    public function Notif()
+    {
+        return view('admin.rombongan.notifikasi');
     }
 }

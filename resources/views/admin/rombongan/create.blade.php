@@ -41,7 +41,7 @@
               <input type="number" name="jumlah_peserta_kanak" placeholder=" jumlah_peserta_kanak">
               <input type="date" name="tanggal_berangkat" placeholder=" tanggal_berangkat ketua rombongan">
               <select name="kendaraan" id="">
-                <option value="">Pilih Transportasi</option>
+                <option value="">Jenis Transportasi</option>
                 <option value="Mobil">Mobil</option>
                 <option value="Bus">Bus</option>
                 <option value="Kereta Api">Kereta Api</option>

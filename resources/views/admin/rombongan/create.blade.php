@@ -34,7 +34,6 @@
               <select id="kabupaten" name="kabupaten" disabled>
                 <option value="">Pilih Kabupaten</option>
               </select>
-
               <input type="text" name="tempat_acara" placeholder=" Tempat Transit">
               <input type="number" name="jumlah_peserta_bapak" placeholder=" jumlah_peserta_bapak">
               <input type="number" name="jumlah_peserta_ibu" placeholder=" jumlah_peserta_ibu">
@@ -42,7 +41,7 @@
               <input type="number" name="jumlah_peserta_kanak" placeholder=" jumlah_peserta_kanak">
               <input type="date" name="tanggal_berangkat" placeholder=" tanggal_berangkat ketua rombongan">
               <select name="kendaraan" id="">
-                <option value="">Pilih Kendaran</option>
+                <option value="">Pilih Transportasi</option>
                 <option value="Mobil">Mobil</option>
                 <option value="Bus">Bus</option>
                 <option value="Kereta Api">Kereta Api</option>
@@ -64,8 +63,6 @@
               </div>
               <textarea name="sarat" id="" placeholder="saran"></textarea>
             </div>
-
-
             <button class=" bg-purple-700 text-white px-2 py-1" type="submit">Daftar Calon Peserta</button>
           </form>
         </div>

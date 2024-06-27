@@ -11,15 +11,13 @@
         <div class="p-12">
           <style>
             h1 {
-              background-color: green;
+              background-color: rgba(7, 75, 36, 255);
             }
           </style>
           <div class=" h1 grid grid-cols-1  gap-2">
-
-            <div class=" p-6">
-              {{ session('success') }}d
+            <div class=" h1 text-white p-6">
+              {{ session('success') }}
             </div>
-
           </div>
         </div>
       </div>
@@ -52,9 +50,16 @@
             <span>
               Kode Pendaftaran : <br>
             </span>
-            <span>
-              {{$kode_pendaftaran->kode_pendaftaran}}
+            <span class=" font-semibold text-2xl">
+              {{$kode_pendaftaran->kode_pendaftaran}} <br>
             </span>
+            <span>
+              Imam Jamah'ah / Ketua Rombongan : <br>
+              <p class=" font-semibold uppercase">
+                {{$kode_pendaftaran->nama}}
+              </p>
+            </span>
+
           </div>
         </div>
       </div>

@@ -1,25 +1,25 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('Open form') }}
+      {{ __('Form Pendaftaran') }}
     </h2>
   </x-slot>
-
-  <div class="py-12">
+  <div class="py-5">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-12">
+        <div class="px-2 py-2">
           <div>
             @if (session('success'))
             <div class=" bg-green-500 text-black">
               {{ session('success') }}
             </div>
             @endif
-
           </div>
+          <h1 class=" text-2xl bg-green-700 px-4 py-2 text-white">
+            Form Pendaftaran <br>
+            Peserta Kubro</h1>
           <form action="/rombongan-kubro/kabupaten" method="post">
             @csrf
-            <h1>Form Pendaftaran Calon Peserta Kubro</h1>
             <div class=" grid grid-cols-1 gap-2 py-2">
 
               <input type="text" name="nama" placeholder=" nama ketua rombongan">
@@ -48,7 +48,7 @@
                 <option value="Kereta Api">Kereta Api</option>
                 <option value="Pesawat">Pesawat</option>
                 <option value="Sepeda Motor">Sepeda Motor</option>
-                <option value="Pic Up">Pic Up</option>
+                <option value="Elf">Mobil Elf</option>
               </select>
               <div>
                 <label for="">Pilih Gelombang Yang ikuti</label>

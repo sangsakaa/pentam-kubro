@@ -9,14 +9,26 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-12">
-          <div>
+          <div class="  grid grid-cols-1 gap-2">
             @if (session('success'))
             <div class=" bg-purple-700 text-white">
               {{ session('success') }}
             </div>
             @endif
           </div>
-          <a href="/form-daftar" class=" bg-purple-700 px-2 py-1 text-white">kembali Ke form Pendaftaran</a>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="p-12">
+          <div class="  grid grid-cols-1 gap-2">
+            <a href="/form-daftar" class=" bg-purple-700 text-white px-2 py-1 rounded-md">kembalikan ke Form Pendaftaran</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </x-app-layout>

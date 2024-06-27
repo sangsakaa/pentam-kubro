@@ -6,9 +6,9 @@
   </x-slot>
 
   <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="px-4 mx-auto sm:px-4 lg:px-4">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-12">
+        <div class="p-4">
           <div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <canvas id="myChart" width="400" height="200"></canvas>
@@ -65,7 +65,7 @@
             </script>
 
           </div>
-          <table class=" w-full">
+          <table class=" hidden  w-full">
             <thead>
               <tr class=" border">
                 <th class=" border" rowspan="2">Gelombang Acara</th>

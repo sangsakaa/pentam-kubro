@@ -51,16 +51,12 @@
   <!-- endkop -->
   <div class="py-5">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class=" px-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-
-
+      <div class=" px-4 py-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class=" grid">
-
         </div>
         <form action="/rombongan-kubro/kabupaten" method="post">
           @csrf
           <div class=" grid grid-cols-1 gap-2 py-2">
-
             <input type="text" name="nama" placeholder=" nama ketua rombongan">
             <select class="text-sm" id="provinsi" name="province">
               <option value="">Pilih Provinsi</option>
@@ -90,23 +86,36 @@
               <option value="Elf">Mobil Elf</option>
             </select>
             <div>
-              <label for="">Pilih Gelombang Yang ikuti</label>
+              <label for="">Pilih Gelombang Yang diikuti</label> <br>
             </div>
-            <div class=" grid-cols-1">
-              <input type="checkbox" name="gelombang_acara[]" id="gelombang1" value="Khodimul">
-              <label for="gelombang1">Gelombang 1 Khodimul</label><br>
-              <input type="checkbox" name="gelombang_acara[]" id="gelombang2" value="Ibu-Ibu">
-              <label for="gelombang2">Gelombang 2 Ibu-Ibu</label><br>
-              <input type="checkbox" name="gelombang_acara[]" id="gelombang3" value="Remaja">
-              <label for="gelombang3">Gelombang 3 Remaja</label><br>
-              <input type="checkbox" name="gelombang_acara[]" id="gelombang4" value="Kanak-Kanak">
-              <label for="gelombang4">Gelombang 4 Kanak-Kanak</label><br>
-              <input type="checkbox" name="gelombang_acara[]" id="gelombang5" value="Bapak-Bapak">
-              <label for="gelombang5">Gelombang 5 Bapak-Bapak</label><br>
+            <div class=" grid grid-cols-2">
+              <div>
+                <input type="checkbox" name="gelombang_acara[]" id="gelombang1" value="Khodimul">
+                <label for="gelombang1">1 Khodimul</label><br>
+              </div>
+              <div>
+                <input type="checkbox" name="gelombang_acara[]" id="gelombang4" value="Kanak-Kanak">
+                <label for="gelombang4">4 Kanak-Kanak</label><br>
+              </div>
+              <div>
+                <input type="checkbox" name="gelombang_acara[]" id="gelombang2" value="Ibu-Ibu">
+                <label for="gelombang2">2 Ibu-Ibu</label><br>
+              </div>
+
+
+              <div>
+                <input type="checkbox" name="gelombang_acara[]" id="gelombang5" value="Bapak-Bapak">
+                <label for="gelombang5">5 Bapak-Bapak</label><br>
+              </div>
+              <div>
+                <input type="checkbox" name="gelombang_acara[]" id="gelombang3" value="Remaja">
+                <label for="gelombang3">3 Remaja</label><br>
+              </div>
+
             </div>
             <textarea name="sarat" id="" placeholder="saran"></textarea>
           </div>
-          <button class=" bg-purple-700 text-white px-2 py-1" type="submit">Daftar Calon Peserta</button>
+          <button class=" bg-purple-700 text-white px-2 py-1" type="submit">Daftar Peserta</button>
         </form>
       </div>
     </div>

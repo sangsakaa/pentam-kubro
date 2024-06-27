@@ -5,19 +5,19 @@
     </h2>
   </x-slot>
   @if (session('success'))
-  <div class="py-12" id="success-message">
+  <div class="py-4" id="success-message">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-12">
-          <style>
+          <!-- <style>
             h1 {
               background-color: green;
             }
-          </style>
-          <div class="grid grid-cols-1 gap-2">
+          </style> -->
+          <div class="grid grid-cols-1 bg-green-300 gap-2">
             <h1>
-              <div class="text-white">
-                {{ session('success') }}
+              <div class=" p-4">
+                {{ session('success') }}d
               </div>
             </h1>
           </div>

@@ -63,7 +63,6 @@
               });
             </script>
           </div>
-
           <table class=" w-full">
             <thead>
               <tr class=" border">
@@ -78,7 +77,6 @@
                 <th class=" border w-16">Ibu</th>
                 <th class=" border w-16">Remaja</th>
                 <th class=" border w-16">Kanak2</th>
-
               </tr>
             </thead>
             <tbody>

@@ -20,7 +20,7 @@
               <img src="{{ asset('img/logo.png') }}" height="100px" width="100px" alt="Example Image">
             </div>
             <div>
-              Pendaftaran Online
+              Pendaftaran Online <br>
               Peserta Mujahadah Kubro <br>
               Muharram 1446
             </div>

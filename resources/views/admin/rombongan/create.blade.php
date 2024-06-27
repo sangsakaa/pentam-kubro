@@ -49,6 +49,9 @@
                 <option value="Elf">Elf</option>
                 <option value="Sepeda Motor">Sepeda Motor</option>
               </select>
+              <div>
+                <label for="">Pilih Gelombang Yang ikuti</label>
+              </div>
               <div class=" grid-cols-1">
                 <input type="checkbox" name="gelombang_acara[]" id="gelombang1" value="Khodimul">
                 <label for="gelombang1">Gelombang 1 Khodimul</label><br>

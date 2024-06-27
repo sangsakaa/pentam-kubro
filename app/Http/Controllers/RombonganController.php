@@ -56,7 +56,7 @@ class RombonganController extends Controller
         $rombongan->kendaraan = $request->input('kendaraan');
         $rombongan->tanggal_berangkat = $request->input('tanggal_berangkat');
         $rombongan->save();
-        return redirect('admin.rombongan.notifikasi')->with('success', 'pengisian berhasil');
+        return redirect('/notifikasi/')->with('success', 'pengisian berhasil');
     }
     public function create()
     {

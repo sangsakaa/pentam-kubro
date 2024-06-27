@@ -24,5 +24,5 @@ Route::get('/dashboard/{provinceCode}', [DashboardController::class, 'getKabupat
 Route::post('/rombongan-kubro/kabupaten', [RombonganController::class, 'store']);
 Route::get('/form-daftar/{provinceCode}', [RombonganController::class, 'getKabupaten']);
 Route::get('/form-daftar', [RombonganController::class, 'create'])->name('form-daftar');
-Route::get('/pesan-error', [RombonganController::class, 'Notif'])->name('pesan-error');
+Route::get('/notifikasi', [RombonganController::class, 'Notif'])->name('notifikasi');
 require __DIR__.'/auth.php';

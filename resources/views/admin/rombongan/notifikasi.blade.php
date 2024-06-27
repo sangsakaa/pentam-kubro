@@ -11,11 +11,12 @@
         <div class="p-12">
           <div>
             @if (session('success'))
-            <div class=" bg-green-500 text-black">
+            <div class=" bg-purple-700 text-white">
               {{ session('success') }}
             </div>
             @endif
           </div>
+          <a href="/form-daftar" class=" bg-purple-700 px-2 py-1 text-white">kembali Ke form Pendaftaran</a>
         </div>
       </div>
 </x-app-layout>

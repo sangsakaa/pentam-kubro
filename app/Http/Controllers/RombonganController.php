@@ -53,6 +53,8 @@ class RombonganController extends Controller
         $rombongan->gelombang_acara = json_encode($request->input('gelombang_acara')); // Simpan sebagai JSON string
         $rombongan->tampat_acara = $request->input('tampat_acara');
         $rombongan->saran = $request->input('saran');
+        $rombongan->kendaraan = $request->input('kendaraan');
+        $rombongan->tanggal_berangkat = $request->input('tanggal_berangkat');
         $rombongan->save();
         return redirect()->back();
     }

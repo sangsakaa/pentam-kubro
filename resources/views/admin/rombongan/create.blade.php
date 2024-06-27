@@ -32,7 +32,7 @@
               <select id="kabupaten" name="kabupaten" disabled>
                 <option value="">Pilih Kabupaten</option>
               </select>
-              <select name="kendaran" id="">
+              <select name="kendaraan" id="">
                 <option value="">Pilih Kendaran</option>
                 <option value="Mobil">Mobil</option>
                 <option value="Bus">Bus</option>

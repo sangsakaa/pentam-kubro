@@ -13,6 +13,11 @@
             @csrf
             <h1>Form Pendaftaran Calon Peserta Kubro</h1>
             <div class=" grid grid-cols-1 gap-2 py-2">
+              <label for="">
+                Tanggal Berangkat
+              </label>
+              <input type="date" name="tanggal_berangkat" placeholder=" tanggal_berangkat ketua rombongan">
+              <input type="text" name="tempat_acara" placeholder=" tempat_acara rombongan">
               <input type="text" name="nama" placeholder=" nama ketua rombongan">
               <input type="number" name="jumlah_peserta_remaja" placeholder=" jumlah_peserta_remaja">
               <input type="number" name="jumlah_peserta_bapak" placeholder=" jumlah_peserta_bapak">
@@ -27,15 +32,16 @@
               <select id="kabupaten" name="kabupaten" disabled>
                 <option value="">Pilih Kabupaten</option>
               </select>
-              <!-- <select name="gelombang_acara" id="">
-                                <option value="">Pilih Gelombang Acara</option>
-                                <option value="Khodimul">Gelombang 1 Khodimul</option>
-                                <option value="Ibu-Ibu">Gelombang 2 Ibu-Ibu</option>
-                                <option value="Remaja">Gelombang 3 Remaja</option>
-                                <option value="Kanak-Kanak">Gelombang 4 Kanak-Kanak</option>
-                                <option value="Bapak-Bapak">Gelombang 5 Bapak-Bapak</option>
-                            </select> -->
-              <div class=" grid-cols-3 grid">
+              <select name="kendaran" id="">
+                <option value="">Pilih Kendaran</option>
+                <option value="Mobil">Mobil</option>
+                <option value="Bus">Bus</option>
+                <option value="Kereta Api">Kereta Api</option>
+                <option value="Pesawat">Pesawat</option>
+                <option value="Elf">Elf</option>
+                <option value="Sepeda Motor">Sepeda Motor</option>
+              </select>
+              <div class=" grid-cols-1">
                 <input type="checkbox" name="gelombang_acara[]" id="gelombang1" value="Khodimul">
                 <label for="gelombang1">Gelombang 1 Khodimul</label><br>
                 <input type="checkbox" name="gelombang_acara[]" id="gelombang2" value="Ibu-Ibu">
@@ -49,6 +55,8 @@
               </div>
               <textarea name="sarat" id="" placeholder="saran"></textarea>
             </div>
+
+
             <button class=" bg-purple-700 text-white px-2 py-1" type="submit">Daftar Calon Peserta</button>
           </form>
         </div>

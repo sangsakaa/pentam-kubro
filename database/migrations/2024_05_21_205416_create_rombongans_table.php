@@ -27,6 +27,7 @@ class CreateRombongansTable extends Migration
             $table->string('gelombang_acara')->nullable();
             $table->string('tampat_acara')->nullable();
             $table->string('saran')->nullable();
+            $table->string('kendaraan')->nullable();
             $table->date('tanggal_berangkat')->nullable();
             $table->timestamps();
         });

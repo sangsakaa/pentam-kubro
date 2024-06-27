@@ -5,7 +5,7 @@
     </h2>
   </x-slot>
   @if (session('success'))
-  <div class="py-4" id="success-message">
+  <div class="py-4 h1" id="success-message">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-12">
@@ -14,8 +14,8 @@
               background-color: rgba(7, 75, 36, 255);
             }
           </style>
-          <div class=" h1 grid grid-cols-1  gap-2">
-            <div class=" h1 text-white p-6">
+          <div class="  grid grid-cols-1  gap-2">
+            <div class=" h1 text-white uppercase text-2xl p-2">
               {{ session('success') }}
             </div>
           </div>

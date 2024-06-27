@@ -13,9 +13,8 @@
           <table class=" w-full">
             <thead>
               <tr class=" border">
-                <th>kode Pendaftar</th>
+                <th>Gelombang Acara</th>
                 <th>Ketua Rombongan</th>
-                <th>Gelombang</th>
                 <th>Provinsi - Kota / Kabupaten</th>
                 <th>Bapak-Bapak</th>
                 <th>Ibu-Ibu</th>
@@ -26,9 +25,11 @@
             </thead>
             <tbody>
               @foreach($grafikPeserta as $peserta)
-              <tr class=" border">
-                <td class=" text-center">{{ $peserta->kode_pendaftaran }}</td>
-                <td class=" text-center">{{ $peserta->gelombang_acara }}</td>
+              <tr class=" border even:bg-gray-100">
+
+                <td class=" text-center">
+                  {{ $peserta->gelombang_acara }}
+                </td>
                 <td class=" text-left capitalize">{{ $peserta->nama}}</td>
                 <td class=" text-center">
                   {{ $peserta->province_name }} <br>
@@ -43,7 +44,6 @@
                    $peserta->jumlah_peserta_remaja +
                    $peserta->jumlah_peserta_ibu  +
                    $peserta->jumlah_peserta_bapak }}
-
                 </td>
               </tr>
               @endforeach

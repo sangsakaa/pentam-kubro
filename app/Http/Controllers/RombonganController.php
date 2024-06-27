@@ -17,7 +17,7 @@ class RombonganController extends Controller
             'kabupaten' => 'required',
             'nama' => 'required',
         ]);
-        $date = Carbon::now()->format('d-m-Y'); // Format the date as 'd-m-Y'
+        $date = Carbon::now()->format('d-m'); // Format the date as 'd-m-Y'
         $year = Carbon::now()->year; // Get the current year
 
         // Get the last registration record ordered by 'id' in descending order

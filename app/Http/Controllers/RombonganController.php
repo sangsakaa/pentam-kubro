@@ -56,7 +56,7 @@ class RombonganController extends Controller
         $rombongan->kendaraan = $request->input('kendaraan');
         $rombongan->tanggal_berangkat = $request->input('tanggal_berangkat');
         $rombongan->save();
-        return redirect('/notifikasi/')->with('success', 'pengisian berhasil');
+        return redirect('/notifikasi/' . $kode_pendaftaran)->with('success', 'pengisian berhasil');
     }
     public function create()
     {
@@ -90,8 +90,10 @@ class RombonganController extends Controller
             return response()->json(['error' => 'Tidak dapat mengambil data kabupaten'], $response->status());
         }
     }
-    public function Notif()
+    public function Notif($kode_pendaftaran)
     {
-        return view('admin.rombongan.notifikasi');
+        // dd($kode_pendaftaran);
+        $kode_pendaftaran = Rombongan::where('kode_pendaftaran', $kode_pendaftaran)->first();
+        return view('admin.rombongan.notifikasi', compact('kode_pendaftaran'));
     }
 }

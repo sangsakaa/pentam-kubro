@@ -9,17 +9,17 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-12">
-          <!-- <style>
+          <style>
             h1 {
               background-color: green;
             }
-          </style> -->
-          <div class="grid grid-cols-1 bg-green-300 gap-2">
-            <h1>
-              <div class=" p-4">
-                {{ session('success') }}d
-              </div>
-            </h1>
+          </style>
+          <div class=" h1 grid grid-cols-1  gap-2">
+
+            <div class=" p-6">
+              {{ session('success') }}d
+            </div>
+
           </div>
         </div>
       </div>
@@ -40,7 +40,23 @@
             <a href="/form-daftar" class=" bg-purple-700 text-white px-2 py-1 rounded-md">kembali ke Form Pendaftaran</a>
           </div>
         </div>
+
       </div>
     </div>
   </div>
+  <div class="py-2 px-2">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="p-12">
+          <div>
+            <span>
+              Kode Pendaftaran : <br>
+            </span>
+            <span>
+              {{$kode_pendaftaran->kode_pendaftaran}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
 </x-app-layout>

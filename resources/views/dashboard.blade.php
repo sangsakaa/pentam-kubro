@@ -31,12 +31,12 @@
               @foreach($grafikPeserta as $peserta)
               <tr class=" border even:bg-gray-100">
 
-                <td class=" text-center">
+                <td class=" border text-center">
                   {{ $peserta->gelombang_acara }}
 
                 </td>
-                <td class=" text-left capitalize">{{ $peserta->nama}}</td>
-                <td class=" text-center">
+                <td class=" border text-left capitalize px-2">{{ $peserta->nama}}</td>
+                <td class=" border text-center">
                   {{ $peserta->province_name }} <br>
                   {{ $peserta->regency_name }}
                 </td>

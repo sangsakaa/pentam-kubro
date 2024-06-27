@@ -9,13 +9,9 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="px-2 py-2">
           <div>
-            @if (session('success'))
-            <div class=" bg-green-500 text-black">
-              {{ session('success') }}
-            </div>
-            @endif
+
           </div>
-          <h1 class=" text-2xl bg-green-700 px-4 py-2 text-white">
+          <h1 class=" text-2xl bg-purple-700 px-4 py-2 text-white">
             Form Pendaftaran <br>
             Peserta Kubro</h1>
           <form action="/rombongan-kubro/kabupaten" method="post">

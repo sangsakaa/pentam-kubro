@@ -21,9 +21,7 @@
             @csrf
             <h1>Form Pendaftaran Calon Peserta Kubro</h1>
             <div class=" grid grid-cols-1 gap-2 py-2">
-              <label for="">
-                Tanggal Berangkat
-              </label>
+
               <input type="text" name="nama" placeholder=" nama ketua rombongan">
               <select id="provinsi" name="province">
                 <option value="">Pilih Provinsi</option>
@@ -39,6 +37,9 @@
               <input type="number" name="jumlah_peserta_ibu" placeholder=" jumlah_peserta_ibu">
               <input type="number" name="jumlah_peserta_remaja" placeholder=" jumlah_peserta_remaja">
               <input type="number" name="jumlah_peserta_kanak" placeholder=" jumlah_peserta_kanak">
+              <label for="">
+                Tanggal Berangkat
+              </label>
               <input type="date" name="tanggal_berangkat" placeholder=" tanggal_berangkat ketua rombongan">
               <select name="kendaraan" id="">
                 <option value="">Jenis Transportasi</option>

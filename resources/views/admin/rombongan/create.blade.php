@@ -47,8 +47,8 @@
                 <option value="Bus">Bus</option>
                 <option value="Kereta Api">Kereta Api</option>
                 <option value="Pesawat">Pesawat</option>
-                <option value="Elf">Elf</option>
                 <option value="Sepeda Motor">Sepeda Motor</option>
+                <option value="Elf">Elf</option>
               </select>
               <div>
                 <label for="">Pilih Gelombang Yang ikuti</label>

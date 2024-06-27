@@ -11,7 +11,7 @@
           <div>
 
           </div>
-          <h1 class=" text-2xl bg-purple-700 px-4 py-2 text-white">
+          <h1 class=" text-2xl bg-green-700 px-4 py-2 text-white">
             Form Pendaftaran <br>
             Peserta Kubro</h1>
           <form action="/rombongan-kubro/kabupaten" method="post">

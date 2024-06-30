@@ -47,19 +47,65 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-12">
           <div>
+            <style>
+              .copy-button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 4px;
+              }
+            </style>
             <span>
               Kode Pendaftaran : <br>
             </span>
-            <span class=" font-semibold text-2xl">
+            <span class="font-semibold text-lg" id="kodePendaftaran">
               {{$kode_pendaftaran->kode_pendaftaran}} <br>
             </span>
+            <button class="copy-button" onclick="copyToClipboard()">Copy Kode Pendaftaran</button>
+
             <span>
               Imam Jamah'ah / Ketua Rombongan : <br>
-              <p class=" font-semibold uppercase">
+              <p class="font-semibold uppercase">
                 {{$kode_pendaftaran->nama}}
               </p>
             </span>
 
+            <script>
+              function copyToClipboard() {
+                // Get the text from the span
+                var kodePendaftaran = document.getElementById("kodePendaftaran").innerText;
+
+                // Create a temporary textarea element
+                var tempTextArea = document.createElement("textarea");
+                tempTextArea.value = kodePendaftaran;
+
+                // Append the textarea to the body (needed for the copy command)
+                document.body.appendChild(tempTextArea);
+
+                // Select the text
+                tempTextArea.select();
+                tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+                // Copy the text to the clipboard
+                document.execCommand("copy");
+
+                // Remove the temporary textarea element
+                document.body.removeChild(tempTextArea);
+
+                // Optional: Notify the user that the text has been copied
+                alert("Kode Pendaftaran copied to clipboard: " + kodePendaftaran);
+              }
+            </script>
+            <a href="/cetak-kartu/{{$kode_pendaftaran->kode_pendaftaran}}" class=" bg-purple-700 text-white px-2 py-1 rounded-md">
+              Download Kartu Peserta
+            </a>
           </div>
         </div>
       </div>

@@ -25,4 +25,6 @@ Route::post('/rombongan-kubro/kabupaten', [RombonganController::class, 'store'])
 Route::get('/form-daftar/{provinceCode}', [RombonganController::class, 'getKabupaten']);
 Route::get('/form-daftar', [RombonganController::class, 'create'])->name('form-daftar');
 Route::get('/notifikasi/{kode_pendaftaran}', [RombonganController::class, 'Notif'])->name('notifikasi');
+Route::get('/kartu-peserta-kubro/{kode_pendaftaran}', [RombonganController::class, 'LayoutKartu']);
+Route::get('/cetak-kartu/{kode_pendaftaran}', [RombonganController::class, 'downloadKPK']);
 require __DIR__.'/auth.php';

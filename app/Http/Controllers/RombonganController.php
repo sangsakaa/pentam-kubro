@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use Dompdf\Dompdf;
 use App\Models\Rombongan;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -95,5 +96,139 @@ class RombonganController extends Controller
         // dd($kode_pendaftaran);
         $kode_pendaftaran = Rombongan::where('kode_pendaftaran', $kode_pendaftaran)->first();
         return view('admin.rombongan.notifikasi', compact('kode_pendaftaran'));
+    }
+    public function LayoutKartu($kode_pendaftaran)
+    {
+        $prov = 'https://wilayah.id/api/provinces.json';
+        $responseProv = Http::get($prov);
+
+        if ($responseProv->successful()) {
+            $provinsi = $responseProv->json(); // Asumsikan $provinsi berisi array kode dan nama provinsi
+
+            // Buat array untuk memetakan kode provinsi ke nama provinsi
+            $provinsiMap = [];
+
+            // Extract the provinces data
+            foreach ($provinsi['data'] as $prov) {
+                $provinsiMap[$prov['code']] = $prov['name'];
+            }
+
+            // Ambil semua data dari model Rombongan
+            $grafikPeserta = Rombongan::where('kode_pendaftaran', $kode_pendaftaran)->get();
+
+            // Iterate through $grafikPeserta and translate province codes to province names
+            foreach ($grafikPeserta as $peserta) {
+                if (isset($provinsiMap[$peserta->province])) {
+                    $peserta->province_name = $provinsiMap[$peserta->province];
+                } else {
+                    $peserta->province_name = 'Unknown';
+                }
+
+                // Ambil kode kabupaten
+                $provinceCode = $peserta->province;
+                $kab = "https://wilayah.id/api/regencies/{$provinceCode}.json";
+                $responseKab = Http::get($kab);
+
+                if ($responseKab->successful()) {
+                    $kabupaten = $responseKab->json(); // Asumsikan $kabupaten berisi array kode dan nama kabupaten
+                    $kabupatenMap = [];
+
+                    // Extract the regencies data
+                    foreach ($kabupaten['data'] as $kab) {
+                        $kabupatenMap[$kab['code']] = $kab['name'];
+                    }
+
+                    // Translate regency codes to regency names
+                    if (isset($kabupatenMap[$peserta->kabupaten])) { // Ubah $peserta->regency menjadi $peserta->kabupaten
+                        $peserta->regency_name = $kabupatenMap[$peserta->kabupaten];
+                    } else {
+                        $peserta->regency_name = 'Unknown';
+                    }
+                } else {
+                    $peserta->regency_name = 'Unknown';
+                }
+            }
+            // Mengirim data ke view 'dashboard'
+            return view('admin.rombongan.kartupeserta', compact('grafikPeserta'));
+        } else {
+            // Jika terjadi error, kembalikan response error
+            return response()->json(['error' => 'Tidak dapat mengambil data wilayah'], $responseProv->status());
+        }
+    }
+    public function downloadKPK($kode_pendaftaran)
+    {
+        // Initialize Dompdf
+        $dompdf = new Dompdf();
+
+        // Fetch provinces data
+        $prov = 'https://wilayah.id/api/provinces.json';
+        $responseProv = Http::get($prov);
+
+        if ($responseProv->successful()) {
+            $provinsi = $responseProv->json(); // Assume $provinsi contains an array of province codes and names
+
+            // Create an array to map province codes to province names
+            $provinsiMap = [];
+
+            // Extract the provinces data
+            foreach ($provinsi['data'] as $prov) {
+                $provinsiMap[$prov['code']] = $prov['name'];
+            }
+
+            // Fetch all data from Rombongan model
+            $grafikPeserta = Rombongan::where('kode_pendaftaran', $kode_pendaftaran)->get();
+
+            // Iterate through $grafikPeserta and translate province codes to province names
+            foreach ($grafikPeserta as $peserta) {
+                if (isset($provinsiMap[$peserta->province])) {
+                    $peserta->province_name = $provinsiMap[$peserta->province];
+                } else {
+                    $peserta->province_name = 'Unknown';
+                }
+
+                // Fetch regency data based on province code
+                $provinceCode = $peserta->province;
+                $kab = "https://wilayah.id/api/regencies/{$provinceCode}.json";
+                $responseKab = Http::get($kab);
+
+                if ($responseKab->successful()) {
+                    $kabupaten = $responseKab->json(); // Assume $kabupaten contains an array of regency codes and names
+                    $kabupatenMap = [];
+
+                    // Extract the regencies data
+                    foreach ($kabupaten['data'] as $kab) {
+                        $kabupatenMap[$kab['code']] = $kab['name'];
+                    }
+
+                    // Translate regency codes to regency names
+                    if (isset($kabupatenMap[$peserta->kabupaten])) {
+                        $peserta->regency_name = $kabupatenMap[$peserta->kabupaten];
+                    } else {
+                        $peserta->regency_name = 'Unknown';
+                    }
+                } else {
+                    $peserta->regency_name = 'Unknown';
+                }
+            }
+
+            // Send data to the 'kartupeserta' view
+            $html = view('admin.rombongan.kartupeserta', compact('grafikPeserta'))->render();
+
+            // Load HTML content into Dompdf
+            $dompdf->loadHtml($html);
+
+            // Set paper size and orientation
+            $dompdf->setPaper('A4', 'portrait');
+
+            // Render the PDF
+            $dompdf->render();
+
+            // Output the generated PDF to browser for download
+            return $dompdf->stream($kode_pendaftaran . ".pdf", ["Attachment" => false]);
+        } else {
+            // If there is an error, return a JSON response with the error message
+            return response()->json(['error' => 'Tidak dapat mengambil data wilayah'], $responseProv->status());
+        }
+
     }
 }

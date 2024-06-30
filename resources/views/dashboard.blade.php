@@ -65,7 +65,7 @@
             </script>
 
           </div>
-          <table class=" hidden  w-full">
+          <table class="   w-full">
             <thead>
               <tr class=" border">
                 <th class=" border" rowspan="2">Gelombang Acara</th>

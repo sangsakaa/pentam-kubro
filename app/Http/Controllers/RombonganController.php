@@ -13,9 +13,11 @@ class RombonganController extends Controller
 {
     public function store(Request $request)
  {
+        // dd($request->all());
         $request->validate([
             'province' => 'required',
             'kabupaten' => 'required',
+            'kecamatan' => 'required',
             'nama' => 'required',
         ]);
         $date = Carbon::now()->format('d-m'); // Format the date as 'd-m-Y'
@@ -46,6 +48,7 @@ class RombonganController extends Controller
         $rombongan->kode_pendaftaran = $kode_pendaftaran;
         $rombongan->province = $request->input('province');
         $rombongan->kabupaten = $request->input('kabupaten');
+        $rombongan->kecamatan = $request->input('kecamatan');
         $rombongan->nama = $request->input('nama');
         $rombongan->jumlah_peserta_remaja = $request->input('jumlah_peserta_remaja');
         $rombongan->jumlah_peserta_kanak = $request->input('jumlah_peserta_kanak');
@@ -55,7 +58,12 @@ class RombonganController extends Controller
         $rombongan->tempat_acara = $request->input('tempat_acara');
         $rombongan->saran = $request->input('saran');
         $rombongan->kendaraan = $request->input('kendaraan');
+        $rombongan->nama_lokasi = $request->input('nama_lokasi');
+        $rombongan->jenis_lokasi = $request->input('jenis_lokasi');
+        $rombongan->biaya = $request->input('biaya');
+        $rombongan->no_hp_ketua = $request->input('no_hp_ketua');
         $rombongan->tanggal_berangkat = $request->input('tanggal_berangkat');
+        $rombongan->tanggal_pulang = $request->input('tanggal_pulang');
         $rombongan->save();
         return redirect('/notifikasi/' . $kode_pendaftaran)->with('success', 'pengisian berhasil');
     }
@@ -91,6 +99,20 @@ class RombonganController extends Controller
             return response()->json(['error' => 'Tidak dapat mengambil data kabupaten'], $response->status());
         }
     }
+    public function getKecamatan($kabupatenCode)
+    {
+        $url = "https://wilayah.id/api/districts/{$kabupatenCode}.json";
+        $response = Http::get($url);
+
+        if ($response->successful()) {
+            $kecamatanData = $response->json();
+            return response()->json($kecamatanData);
+        } else {
+            return response()->json(['error' => 'Unable to fetch data'], 500);
+        }
+        dd($response);
+    }
+    
     public function Notif($kode_pendaftaran)
     {
         // dd($kode_pendaftaran);

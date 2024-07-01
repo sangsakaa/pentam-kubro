@@ -81,4 +81,17 @@ class DashboardController extends Controller
             return response()->json(['error' => 'Tidak dapat mengambil data kabupaten'], $response->status());
         }
     }
+    public function getKecamatan($kabupatenCode)
+    {
+        $kab = "https://wilayah.id/api/districts/{$kabupatenCode}.json";
+
+        $response = Http::get($kab);
+
+        if ($response->successful()) {
+            return response()->json($response->json()['data']);
+        } else {
+            return response()->json(['error' => 'Tidak dapat mengambil data kabupaten'], $response->status());
+        }
+        dd($response);
+    }
 }

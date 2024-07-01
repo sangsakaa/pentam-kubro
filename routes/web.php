@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RombonganController;
+use App\Models\Rombongan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +22,10 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware(['auth']);
 Route::get('/dashboard/{provinceCode}', [DashboardController::class, 'getKabupaten']);
-Route::post('/rombongan-kubro/kabupaten', [RombonganController::class, 'store']);
+Route::get('/dashboard/kecamatan/{kabupatenCode}', [DashboardController::class, 'getKecamatan']);
+Route::post('/rombongan-kubro/kabupaten/kecamatan', [RombonganController::class, 'store']);
 Route::get('/form-daftar/{provinceCode}', [RombonganController::class, 'getKabupaten']);
+
 Route::get('/form-daftar', [RombonganController::class, 'create'])->name('form-daftar');
 Route::get('/notifikasi/{kode_pendaftaran}', [RombonganController::class, 'Notif'])->name('notifikasi');
 Route::get('/kartu-peserta-kubro/{kode_pendaftaran}', [RombonganController::class, 'LayoutKartu']);

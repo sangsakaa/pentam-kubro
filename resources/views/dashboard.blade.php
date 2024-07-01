@@ -69,7 +69,7 @@
             <table class="   w-full">
               <thead>
                 <tr class=" border">
-                  <th class=" border" rowspan="2">Gelombang Acara</th>
+                  <th class=" hidden border" rowspan="2">Gelombang Acara</th>
                   <th class=" border" rowspan="2">Ketua <br> Rombongan</th>
                   <th class=" border" rowspan="2">Provinsi <br>Kota / Kabupaten</th>
                   <th class=" border" colspan="4">Peserta Mujahadah</th>
@@ -86,7 +86,7 @@
                 @foreach($grafikPeserta as $peserta)
                 <tr class=" hover:bg-green-200 border even:bg-gray-100">
 
-                  <td class=" border text-center">
+                  <td class=" hidden border text-center">
                     {{ $peserta->gelombang_acara }}
                   </td>
                   <td class=" border text-left capitalize px-2">{{ $peserta->nama}}</td>

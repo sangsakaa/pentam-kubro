@@ -224,7 +224,7 @@ class RombonganController extends Controller
             $dompdf->render();
 
             // Output the generated PDF to browser for download
-            return $dompdf->stream($kode_pendaftaran . ".pdf", ["Attachment" => false]);
+            return $dompdf->stream($kode_pendaftaran . ".pdf", ["Attachment" => true]);
         } else {
             // If there is an error, return a JSON response with the error message
             return response()->json(['error' => 'Tidak dapat mengambil data wilayah'], $responseProv->status());

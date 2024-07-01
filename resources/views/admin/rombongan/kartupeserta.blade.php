@@ -8,6 +8,7 @@
 
       #logo {
         margin-right: 20px;
+        text-align: center;
         /* Adjust this value to control the space between logo and title */
       }
 
@@ -19,55 +20,137 @@
       #tittle span {
         text-align: left;
       }
+
+      .h1 {
+        background-color: rgba(7, 75, 36, 255);
+        color: white;
+      }
+
+      .kop {
+        width: 100%;
+      }
+
+      td {
+        border: 1px solid #ddd;
+        text-align: center;
+        /* Center text in table cell */
+        vertical-align: middle;
+        /* Center vertically */
+      }
+
+      .center-img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .nama_cap {
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: capitalize;
+
+
+      }
+
+      table {
+        width: 100%;
+        border: solid 1px;
+
+      }
+
+      td {
+        border: solid 1px;
+      }
+
+      h1 {
+        text-transform: capitalize;
+        text-align: center;
+      }
     </style>
-    <div class="h1 px-2 py-2 text-white  flex grid-cols-1">
-      <div id="container">
-        <div id="logo">
+    <table class=" kop">
+      <tr class="h1 ">
+        <td class="logo">
           <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/img/logo.png'))) }}" height="80px" width="80px" alt="Example Image">
-        </div>
-        <div id="tittle">
-          <span>
-            Pendaftaran Online <br>
+        </td>
+        <td>
+          <span class=" kop-1">
+            Yayasan Perjuangan Wahidiyah dan Pondok Pesantren Kedunglo <br>
+            PANITIA PELAKSANA MUJAHADAH KUBRO <br>
+            MUHARRAM 1446 H
           </span>
-          <span class="text-2xl">
-            Kartu Peserta Mujahadah Kubro <br>
-          </span>
-          <span>
-            Muharram 1446
-          </span>
-        </div>
-      </div>
-    </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <h1>kartu peserta</h1>
   </div>
   <div class=" px-4 py-2">
-    <table class="   w-full">
+    <div>
+      <table class=" kop">
+        <thead>
+          <tr>
+            <td>Ketua Rombongan</td>
+            <td class=" nama_cap">
+              {{$grafikPeserta->first()->nama}}
+            </td>
+          </tr>
+          <tr>
+            <td>Alamat </td>
+            <td>
+              {{$grafikPeserta->first()->province_name}}
+              {{$grafikPeserta->first()->regency_name}}
+            </td>
+          </tr>
+          <tr>
+            <td>Kode Pendaftaran </td>
+            <td>
+              {{$grafikPeserta->first()->kode_pendaftaran}}
+
+            </td>
+          </tr>
+          <tr>
+            <td>Tanggal Pendaftaran </td>
+            <td>
+
+              {{ \Carbon\Carbon::parse($grafikPeserta->first()->created_at)->isoFormat(' DD MMMM Y') }}
+
+            </td>
+          </tr>
+          <tr>
+            <td>Tanggal Tiba </td>
+            <td>
+
+              {{ \Carbon\Carbon::parse($grafikPeserta->first()->tanggal_berangkat)->isoFormat(' DD MMMM Y') }}
+            </td>
+          </tr>
+          <tr>
+            <td>Tanggal download </td>
+            <td>
+
+              {{ \Carbon\Carbon::parse(now())->isoFormat(' DD MMMM Y') }}
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <table class=" kop   w-full">
       <thead>
         <tr class=" border">
-          <th class=" border" rowspan="2">Gelombang Acara</th>
-          <th class=" border" rowspan="2">Ketua <br> Rombongan</th>
-          <th class=" border" rowspan="2">Provinsi <br>Kota / Kabupaten</th>
-          <th class=" border" colspan="4">Peserta Mujahadah</th>
-          <th class=" border" rowspan="2">Total</th>
+
+          <td class=" border" colspan="4">Peserta Mujahadah</td>
+          <td class=" border" rowspan="2">Total</td>
         </tr>
         <tr>
-          <th class=" border w-16">Bapak</th>
-          <th class=" border w-16">Ibu</th>
-          <th class=" border w-16">Remaja</th>
-          <th class=" border w-16">Kanak2</th>
+          <td class=" border w-16">Bapak</td>
+          <td class=" border w-16">Ibu</td>
+          <td class=" border w-16">Remaja</td>
+          <td class=" border w-16">Kanak2</td>
         </tr>
       </thead>
       <tbody>
         @foreach($grafikPeserta as $peserta)
         <tr class=" hover:bg-green-200 border even:bg-gray-100">
-
-          <td class=" border text-center">
-            {{ $peserta->gelombang_acara }}
-          </td>
-          <td class=" border text-left capitalize px-2">{{ $peserta->nama}}</td>
-          <td class=" border text-center">
-            {{ $peserta->province_name }} <br>
-            {{ $peserta->regency_name }}
-          </td>
           <td class=" border text-center">{{ $peserta->jumlah_peserta_bapak }}</td>
           <td class=" border text-center">{{ $peserta->jumlah_peserta_ibu }}</td>
           <td class=" border text-center">{{ $peserta->jumlah_peserta_remaja }}</td>

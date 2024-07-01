@@ -86,8 +86,8 @@
                 @foreach($grafikPeserta as $peserta)
                 <tr class=" hover:bg-green-200 border even:bg-gray-100">
 
-                  <td class=" hidden border text-center">
-                    {{ $peserta->gelombang_acara }}
+                  <td class="  border text-center">
+                    {{ $peserta->kode_pendaftaran }}
                   </td>
                   <td class=" border text-left capitalize px-2">{{ $peserta->nama}}</td>
                   <td class=" border text-center">

@@ -68,7 +68,7 @@
             <span class="font-semibold text-lg" id="kodePendaftaran">
               {{$kode_pendaftaran->kode_pendaftaran}} <br>
             </span>
-            <button class="copy-button" onclick="copyToClipboard()">Copy Kode Pendaftaran</button>
+
 
             <span>
               Imam Jamah'ah / Ketua Rombongan : <br>
@@ -103,9 +103,12 @@
                 alert("Kode Pendaftaran copied to clipboard: " + kodePendaftaran);
               }
             </script>
-            <a href="/cetak-kartu/{{$kode_pendaftaran->kode_pendaftaran}}" class=" bg-purple-700 text-white px-2 py-1 rounded-md">
-              Download Kartu Peserta
-            </a>
+            <div class=" grid grid-cols-1 sm:flex sm:grid-cols-2 ">
+              <a href="/cetak-kartu/{{$kode_pendaftaran->kode_pendaftaran}}" class=" text-center bg-purple-700 text-white px-2  py-2.5 rounded-md">
+                Download Kartu Peserta
+              </a>
+              <button class="copy-button" onclick="copyToClipboard()">Copy Kode Pendaftaran</button>
+            </div>
           </div>
         </div>
       </div>

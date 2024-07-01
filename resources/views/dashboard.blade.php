@@ -69,7 +69,7 @@
             <table class="   w-full">
               <thead>
                 <tr class=" border">
-                  <th class=" hidden border" rowspan="2">Gelombang Acara</th>
+                  <th class="  border" rowspan="2">Kode Pendaftaran</th>
                   <th class=" border" rowspan="2">Ketua <br> Rombongan</th>
                   <th class=" border" rowspan="2">Provinsi <br>Kota / Kabupaten</th>
                   <th class=" border" colspan="4">Peserta Mujahadah</th>

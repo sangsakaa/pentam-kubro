@@ -132,7 +132,7 @@
         <tr class=" border">
           <td class=" border" rowspan="2">Kendaraan</td>
           <td class=" border" rowspan="2">
-            Tgl Datang <br>
+            Tgl Datang /
             Tgl Pulang
           </td>
           <td class=" border" colspan="4">Peserta Mujahadah</td>

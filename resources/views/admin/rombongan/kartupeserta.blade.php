@@ -105,15 +105,16 @@
       <tr>
         <td class="td-left">Jenis Tempat Tinggal </td>
         <td class="td-left">: {{$grafikPeserta->first()->jenis_lokasi}}</td>
+        <td class="td-left">Kabupaten</td>
+        <td class="td-left">: {{$grafikPeserta->first()->regency_name}}</td>
 
-        <td class="td-left">Kecamatan </td>
-        <td class="td-left">: {{$grafikPeserta->first()->district_name}}</td>
       </tr>
       <tr>
         <td class="td-left">Nama Lokasi</td>
         <td class="td-left">: {{$grafikPeserta->first()->nama_lokasi}}</td>
-        <td class="td-left">Kabupaten</td>
-        <td class="td-left">: {{$grafikPeserta->first()->regency_name}}</td>
+
+        <td class="td-left">Kecamatan </td>
+        <td class="td-left">: {{$grafikPeserta->first()->district_name}}</td>
 
 
       </tr>

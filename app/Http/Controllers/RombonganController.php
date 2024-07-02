@@ -166,16 +166,43 @@ class RombonganController extends Controller
                     } else {
                         $peserta->regency_name = 'Unknown';
                     }
+
+                    // Ambil kode kecamatan
+                    $regencyCode = $peserta->kabupaten;
+                    $kec = "https://wilayah.id/api/districts/{$regencyCode}.json";
+                    $responseKec = Http::get($kec);
+
+                    if ($responseKec->successful()) {
+                        $kecamatan = $responseKec->json(); // Asumsikan $kecamatan berisi array kode dan nama kecamatan
+                        $kecamatanMap = [];
+
+                        // Extract the districts data
+                        foreach ($kecamatan['data'] as $kec) {
+                            $kecamatanMap[$kec['code']] = $kec['name'];
+                        }
+
+                        // Translate district codes to district names
+                        if (isset($kecamatanMap[$peserta->kecamatan])) {
+                            $peserta->district_name = $kecamatanMap[$peserta->kecamatan];
+                        } else {
+                            $peserta->district_name = 'Unknown';
+                        }
+                    } else {
+                        $peserta->district_name = 'Unknown';
+                    }
                 } else {
                     $peserta->regency_name = 'Unknown';
+                    $peserta->district_name = 'Unknown';
                 }
             }
+
             // Mengirim data ke view 'dashboard'
             return view('admin.rombongan.kartupeserta', compact('grafikPeserta'));
         } else {
             // Jika terjadi error, kembalikan response error
             return response()->json(['error' => 'Tidak dapat mengambil data wilayah'], $responseProv->status());
         }
+
     }
     public function downloadKPK($kode_pendaftaran)
     {
@@ -187,9 +214,9 @@ class RombonganController extends Controller
         $responseProv = Http::get($prov);
 
         if ($responseProv->successful()) {
-            $provinsi = $responseProv->json(); // Assume $provinsi contains an array of province codes and names
+            $provinsi = $responseProv->json(); // Asumsikan $provinsi berisi array kode dan nama provinsi
 
-            // Create an array to map province codes to province names
+            // Buat array untuk memetakan kode provinsi ke nama provinsi
             $provinsiMap = [];
 
             // Extract the provinces data
@@ -197,7 +224,7 @@ class RombonganController extends Controller
                 $provinsiMap[$prov['code']] = $prov['name'];
             }
 
-            // Fetch all data from Rombongan model
+            // Ambil semua data dari model Rombongan
             $grafikPeserta = Rombongan::where('kode_pendaftaran', $kode_pendaftaran)->get();
 
             // Iterate through $grafikPeserta and translate province codes to province names
@@ -208,13 +235,13 @@ class RombonganController extends Controller
                     $peserta->province_name = 'Unknown';
                 }
 
-                // Fetch regency data based on province code
+                // Ambil kode kabupaten
                 $provinceCode = $peserta->province;
                 $kab = "https://wilayah.id/api/regencies/{$provinceCode}.json";
                 $responseKab = Http::get($kab);
 
                 if ($responseKab->successful()) {
-                    $kabupaten = $responseKab->json(); // Assume $kabupaten contains an array of regency codes and names
+                    $kabupaten = $responseKab->json(); // Asumsikan $kabupaten berisi array kode dan nama kabupaten
                     $kabupatenMap = [];
 
                     // Extract the regencies data
@@ -223,16 +250,40 @@ class RombonganController extends Controller
                     }
 
                     // Translate regency codes to regency names
-                    if (isset($kabupatenMap[$peserta->kabupaten])) {
+                    if (isset($kabupatenMap[$peserta->kabupaten])) { // Ubah $peserta->regency menjadi $peserta->kabupaten
                         $peserta->regency_name = $kabupatenMap[$peserta->kabupaten];
                     } else {
                         $peserta->regency_name = 'Unknown';
                     }
+
+                    // Ambil kode kecamatan
+                    $regencyCode = $peserta->kabupaten;
+                    $kec = "https://wilayah.id/api/districts/{$regencyCode}.json";
+                    $responseKec = Http::get($kec);
+
+                    if ($responseKec->successful()) {
+                        $kecamatan = $responseKec->json(); // Asumsikan $kecamatan berisi array kode dan nama kecamatan
+                        $kecamatanMap = [];
+
+                        // Extract the districts data
+                        foreach ($kecamatan['data'] as $kec) {
+                            $kecamatanMap[$kec['code']] = $kec['name'];
+                        }
+
+                        // Translate district codes to district names
+                        if (isset($kecamatanMap[$peserta->kecamatan])) {
+                            $peserta->district_name = $kecamatanMap[$peserta->kecamatan];
+                        } else {
+                            $peserta->district_name = 'Unknown';
+                        }
+                    } else {
+                        $peserta->district_name = 'Unknown';
+                    }
                 } else {
                     $peserta->regency_name = 'Unknown';
+                    $peserta->district_name = 'Unknown';
                 }
             }
-
             // Send data to the 'kartupeserta' view
             $html = view('admin.rombongan.kartupeserta', compact('grafikPeserta'))->render();
 
@@ -246,11 +297,12 @@ class RombonganController extends Controller
             $dompdf->render();
 
             // Output the generated PDF to browser for download
-            return $dompdf->stream($kode_pendaftaran . ".pdf", ["Attachment" => true]);
+            return $dompdf->stream($kode_pendaftaran . ".pdf", ["Attachment" => false]);
         } else {
             // If there is an error, return a JSON response with the error message
             return response()->json(['error' => 'Tidak dapat mengambil data wilayah'], $responseProv->status());
         }
+
 
     }
 }

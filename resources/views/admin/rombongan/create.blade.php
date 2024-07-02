@@ -62,21 +62,8 @@
         <form action="/rombongan-kubro/kabupaten/kecamatan" method="post">
           @csrf
           <div class=" grid grid-cols-1 gap-2 py-2">
-            <select required class="text-sm" id="provinsi" name="province">
-              <option value="">Pilih Provinsi</option>
-              @foreach($provinces as $province)
-              <option value="{{ $province['code'] }}">{{ $province['name'] }}</option>
-              @endforeach
-            </select>
-            <select required class="text-sm" id="kabupaten" name="kabupaten" disabled>
-              <option value="">Pilih Kabupaten</option>
-            </select>
-            <select required class="text-sm" id="kecamatan" name="kecamatan" disabled>
-              <option value="">Pilih Kecamatan</option>
-            </select>
             <input required type="text" name="nama" placeholder="nama lengkap Ketua Rombongan">
             <input required type="text" id="no_hp_ketua" name="no_hp_ketua" placeholder="Nomor HP Ketua Rombongan">
-
             <script>
               document.getElementById('no_hp_ketua').addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\D/g, ''); // Remove all non-digit characters
@@ -92,11 +79,23 @@
                 e.target.value = value;
               });
             </script>
-            <input required type="text" name="tempat_acara" placeholder=" Tempat Transit">
+            <select required class="text-sm" id="provinsi" name="province">
+              <option value="">Pilih Provinsi</option>
+              @foreach($provinces as $province)
+              <option value="{{ $province['code'] }}">{{ $province['name'] }}</option>
+              @endforeach
+            </select>
+            <select required class="text-sm" id="kabupaten" name="kabupaten" disabled>
+              <option value="">Pilih Kabupaten</option>
+            </select>
+            <select required class="text-sm" id="kecamatan" name="kecamatan" disabled>
+              <option value="">Pilih Kecamatan</option>
+            </select>
             <input type="number" name="jumlah_peserta_bapak" placeholder=" jumlah_peserta_bapak">
             <input type="number" name="jumlah_peserta_ibu" placeholder=" jumlah_peserta_ibu">
             <input type="number" name="jumlah_peserta_remaja" placeholder=" jumlah_peserta_remaja">
             <input type="number" name="jumlah_peserta_kanak" placeholder=" jumlah_peserta_kanak">
+            <input hidden type="text" name="tempat_acara" placeholder=" Tempat Transit">
             <select required class="text-sm" name="jenis_lokasi" id="">
               <option value="">Jenis Lokasi</option>
               <option value="Area Lapangan">Area Lapangan</option>
@@ -106,6 +105,7 @@
               <option value="Kontrakan">Kontrakan</option>
             </select>
             <input type="text" name="nama_lokasi" placeholder=" nama_lokasi">
+            <input type="text" id="biaya" name="biaya" placeholder=" biaya">
             <label for="">
               Tanggal Tiba / Kedatangan
             </label>
@@ -123,8 +123,6 @@
               <option value="Sepeda Motor">Sepeda Motor</option>
               <option value="Elf">Mobil Elf</option>
             </select>
-            <input type="text" id="biaya" name="biaya" placeholder=" biaya">
-
             <script>
               document.getElementById('biaya').addEventListener('input', function(e) {
                 let value = e.target.value.replace(/[^0-9]/g, ''); // Remove all non-digit characters

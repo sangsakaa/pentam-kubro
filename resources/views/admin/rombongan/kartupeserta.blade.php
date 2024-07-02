@@ -82,10 +82,38 @@
       </tr>
     </table>
   </div>
-  <div>
-    <h1>kartu peserta</h1>
+
+  <div class="info-container">
+    <div class="info-item"> </div>
+    <div class="info-item"></div>
+    <div class="info-item"></div>
+    <div class="info-item"></div>
+    <style>
+      .td-left {
+        text-align: left;
+        border: none;
+      }
+    </style>
+    <table class="td-left">
+      <tr>
+        <td class="td-left">Ketua Rombongan</td>
+        <td class="td-left">: {{$grafikPeserta->first()->nama}}</td>
+        <td class="td-left">Provinsi </td>
+        <td class="td-left">: {{$grafikPeserta->first()->province_name}}</td>
+      </tr>
+      <tr>
+        <td class="td-left">Kabupaten</td>
+        <td class="td-left">: {{$grafikPeserta->first()->regency_name}}</td>
+        <td class="td-left">Kecamatan </td>
+        <td class="td-left">: {{$grafikPeserta->first()->district_name}}</td>
+      </tr>
+    </table>
   </div>
-  <div class=" px-4 py-2">
+
+
+
+
+  <div class=" px-4">
     <div>
       <table class=" kop">
         <thead>
@@ -100,6 +128,7 @@
             <td>
               {{$grafikPeserta->first()->province_name}}
               {{$grafikPeserta->first()->regency_name}}
+              Kec.{{$grafikPeserta->first()->district_name}}
             </td>
           </tr>
           <tr>

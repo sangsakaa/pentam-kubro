@@ -129,10 +129,13 @@
       <thead>
         <tr class=" border">
           <td class=" border" rowspan="2">Kendaraan</td>
-          <td class=" border" rowspan="2">Tgl Datang</td>
-          <td class=" border" rowspan="2">Tgl Pulang</td>
+          <td class=" border" rowspan="2">
+            Tgl Datang <br>
+            Tgl Pulang
+          </td>
           <td class=" border" colspan="4">Peserta Mujahadah</td>
           <td class=" border" rowspan="2">Total</td>
+          <td class=" border" rowspan="2">Biaya</td>
         </tr>
         <tr>
           <td class=" border w-16">Bapak</td>
@@ -145,8 +148,11 @@
         @foreach($grafikPeserta as $peserta)
         <tr class=" hover:bg-green-200 border even:bg-gray-100">
           <td class=" border text-center">{{ $peserta->kendaraan }}</td>
-          <td class="border text-center">{{ \Carbon\Carbon::parse($peserta->tanggal_berangkat)->isoFormat('dddd, DD-MM-YYYY') }}</td>
-          <td class="border text-center">{{ \Carbon\Carbon::parse($peserta->tanggal_pulang)->isoFormat('dddd, DD-MM-YYYY') }}</td>
+          <td class="border text-center">
+            Datang : {{ \Carbon\Carbon::parse($peserta->tanggal_berangkat)->isoFormat('dddd, DD-MM-YYYY') }} <br>
+
+            Pulang : {{ \Carbon\Carbon::parse($peserta->tanggal_pulang)->isoFormat('dddd, DD-MM-YYYY') }}
+          </td>
           <td class=" border text-center">{{ $peserta->jumlah_peserta_bapak }}</td>
           <td class=" border text-center">{{ $peserta->jumlah_peserta_ibu }}</td>
           <td class=" border text-center">{{ $peserta->jumlah_peserta_remaja }}</td>
@@ -157,6 +163,7 @@
                    $peserta->jumlah_peserta_ibu  +
                    $peserta->jumlah_peserta_bapak }}
           </td>
+          <td class=" border text-center">{{ $peserta->biaya }}</td>
         </tr>
         @endforeach
       </tbody>

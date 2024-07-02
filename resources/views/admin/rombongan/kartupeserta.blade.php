@@ -149,9 +149,9 @@
         <tr class=" hover:bg-green-200 border even:bg-gray-100">
           <td class=" border text-center">{{ $peserta->kendaraan }}</td>
           <td class="border text-center">
-            Datang : {{ \Carbon\Carbon::parse($peserta->tanggal_berangkat)->isoFormat('dddd, DD-MM-YYYY') }} <br>
+            Datang : {{ \Carbon\Carbon::parse($peserta->tanggal_berangkat)->isoFormat('dddd, DD-MMMM-YYYY') }} <br>
 
-            Pulang : {{ \Carbon\Carbon::parse($peserta->tanggal_pulang)->isoFormat('dddd, DD-MM-YYYY') }}
+            Pulang : {{ \Carbon\Carbon::parse($peserta->tanggal_pulang)->isoFormat('dddd, DD-MMMM-YYYY') }}
           </td>
           <td class=" border text-center">{{ $peserta->jumlah_peserta_bapak }}</td>
           <td class=" border text-center">{{ $peserta->jumlah_peserta_ibu }}</td>

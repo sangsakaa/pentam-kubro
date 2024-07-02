@@ -97,14 +97,14 @@
             <input type="number" name="jumlah_peserta_kanak" placeholder=" jumlah_peserta_kanak">
             <input hidden type="text" name="tempat_acara" placeholder=" Tempat Transit">
             <select required class="text-sm" name="jenis_lokasi" id="">
-              <option value="">Jenis Lokasi</option>
+              <option value="">Jenis Tempat Tinggal Selama Kubro</option>
               <option value="Area Lapangan">Area Lapangan</option>
               <option value="Kos">Kos</option>
               <option value="Hotel">Hotel</option>
               <option value="Homestay">Homestay</option>
               <option value="Kontrakan">Kontrakan</option>
             </select>
-            <input type="text" name="nama_lokasi" placeholder=" nama_lokasi">
+            <input type="text" name="nama_lokasi" placeholder=" Lokasi Tempat Tinggal Selama Kubro">
             <input type="text" id="biaya" name="biaya" placeholder=" biaya">
             <label for="">
               Tanggal Tiba / Kedatangan

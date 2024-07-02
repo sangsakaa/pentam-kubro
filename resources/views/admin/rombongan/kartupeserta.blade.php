@@ -28,6 +28,7 @@
 
       .kop {
         width: 100%;
+        margin-top: 10px;
       }
 
       td {
@@ -82,7 +83,6 @@
       </tr>
     </table>
   </div>
-
   <div class="info-container">
     <div class="info-item"> </div>
     <div class="info-item"></div>
@@ -94,6 +94,7 @@
         border: none;
       }
     </style>
+    <hr>
     <table class="td-left">
       <tr>
         <td class="td-left">Ketua Rombongan</td>
@@ -109,64 +110,21 @@
       </tr>
     </table>
   </div>
-
-
-
-
+  <hr>
   <div class=" px-4">
-    <div>
-      <table class=" kop">
-        <thead>
-          <tr>
-            <td>Ketua Rombongan</td>
-            <td class=" nama_cap">
-              {{$grafikPeserta->first()->nama}}
-            </td>
-          </tr>
-          <tr>
-            <td>Alamat </td>
-            <td>
-              {{$grafikPeserta->first()->province_name}}
-              {{$grafikPeserta->first()->regency_name}}
-              Kec.{{$grafikPeserta->first()->district_name}}
-            </td>
-          </tr>
-          <tr>
-            <td>Kode Pendaftaran </td>
-            <td>
-              {{$grafikPeserta->first()->kode_pendaftaran}}
+    @php
+    use Carbon\Carbon;
+    Carbon::setLocale('id');
+    @endphp
 
-            </td>
-          </tr>
-          <tr>
-            <td>Tanggal Pendaftaran </td>
-            <td>
 
-              {{ \Carbon\Carbon::parse($grafikPeserta->first()->created_at)->isoFormat(' DD MMMM Y') }}
-
-            </td>
-          </tr>
-          <tr>
-            <td>Tanggal Tiba </td>
-            <td>
-
-              {{ \Carbon\Carbon::parse($grafikPeserta->first()->tanggal_berangkat)->isoFormat(' DD MMMM Y') }}
-            </td>
-          </tr>
-          <tr>
-            <td>Tanggal download </td>
-            <td>
-
-              {{ \Carbon\Carbon::parse(now())->isoFormat(' DD MMMM Y') }}
-            </td>
-          </tr>
-        </thead>
-      </table>
-    </div>
     <table class=" kop   w-full">
       <thead>
         <tr class=" border">
 
+          <td class=" border" rowspan="2">Kendaraan</td>
+          <td class=" border" rowspan="2">Tgl Datang</td>
+          <td class=" border" rowspan="2">Tgl Pulang</td>
           <td class=" border" colspan="4">Peserta Mujahadah</td>
           <td class=" border" rowspan="2">Total</td>
         </tr>
@@ -180,6 +138,9 @@
       <tbody>
         @foreach($grafikPeserta as $peserta)
         <tr class=" hover:bg-green-200 border even:bg-gray-100">
+          <td class=" border text-center">{{ $peserta->kendaraan }}</td>
+          <td class="border text-center">{{ \Carbon\Carbon::parse($peserta->tanggal_berangkat)->isoFormat('dddd, DD-MM-YYYY') }}</td>
+          <td class="border text-center">{{ \Carbon\Carbon::parse($peserta->tanggal_pulang)->isoFormat('dddd, DD-MM-YYYY') }}</td>
           <td class=" border text-center">{{ $peserta->jumlah_peserta_bapak }}</td>
           <td class=" border text-center">{{ $peserta->jumlah_peserta_ibu }}</td>
           <td class=" border text-center">{{ $peserta->jumlah_peserta_remaja }}</td>

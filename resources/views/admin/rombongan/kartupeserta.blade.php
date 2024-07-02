@@ -108,6 +108,13 @@
         <td class="td-left">Kecamatan </td>
         <td class="td-left">: {{$grafikPeserta->first()->district_name}}</td>
       </tr>
+      <tr>
+        <td class="td-left">Jenis Tempat Tinggal </td>
+        <td class="td-left">: {{$grafikPeserta->first()->jenis_lokasi}}</td>
+        <td class="td-left">Nama Lokasi</td>
+        <td class="td-left">: {{$grafikPeserta->first()->nama_lokasi}}</td>
+
+      </tr>
     </table>
   </div>
   <hr>
@@ -121,7 +128,6 @@
     <table class=" kop   w-full">
       <thead>
         <tr class=" border">
-
           <td class=" border" rowspan="2">Kendaraan</td>
           <td class=" border" rowspan="2">Tgl Datang</td>
           <td class=" border" rowspan="2">Tgl Pulang</td>

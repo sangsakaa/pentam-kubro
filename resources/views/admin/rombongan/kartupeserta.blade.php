@@ -107,27 +107,48 @@
         <td class="td-left">: {{$grafikPeserta->first()->jenis_lokasi}}</td>
         <td class="td-left">Kabupaten</td>
         <td class="td-left">: {{$grafikPeserta->first()->regency_name}}</td>
-
       </tr>
       <tr>
         <td class="td-left">Nama Lokasi</td>
         <td class="td-left">: {{$grafikPeserta->first()->nama_lokasi}}</td>
-
         <td class="td-left">Kecamatan </td>
         <td class="td-left">: {{$grafikPeserta->first()->district_name}}</td>
-
-
       </tr>
     </table>
   </div>
   <hr>
+  <style>
+    .kode_pen {
+      text-align: center;
+      justify-items: center;
+    }
+  </style>
+  <span class="kode_pen">
+    Kode : {{$grafikPeserta->first()->kode_pendaftaran}}
+  </span>
+  <span class="kode_pen">
+    Acara :
+
+    @foreach($grafikPeserta as $peserta)
+    @php
+    // Hapus karakter yang tidak diinginkan dari string
+    $gelombangAcaraClean = str_replace(['[', ']', '"'], '', $peserta->gelombang_acara);
+    // Pisahkan string berdasarkan koma
+    $acaraArray = explode(',', $gelombangAcaraClean);
+    @endphp
+    @foreach($acaraArray as $acara)
+    <span>{{ trim($acara) }},</span>
+    @endforeach
+    @endforeach
+    </ul>
+  </span>
+  <hr>
+
   <div class=" px-4">
     @php
     use Carbon\Carbon;
     Carbon::setLocale('id');
     @endphp
-
-
     <table class=" kop   w-full">
       <thead>
         <tr class=" border">
@@ -167,8 +188,7 @@
                    $peserta->jumlah_peserta_bapak }}
           </td>
           <td class=" border text-center">{{ $peserta->biaya }}</td>
-        </tr>
-        @endforeach
+          @endforeach
       </tbody>
     </table>
   </div>

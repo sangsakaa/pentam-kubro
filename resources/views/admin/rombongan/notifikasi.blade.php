@@ -87,7 +87,7 @@
               }
             </script>
             <div class="  ">
-              <a href="/cetak-kartu/{{$kode_pendaftaran->kode_pendaftaran}}" class=" copy-button-1  rounded-md">
+              <a href="/cetak-kartu/{{$kode_pendaftaran->kode_pendaftaran}}" target="_blank" class=" copy-button-1  rounded-md">
                 Download Kartu Peserta
               </a>
               <button class="copy-button" onclick="copyToClipboard()">Copy Kode Pendaftaran</button>

@@ -9,7 +9,8 @@
     <div class="px-4 mx-auto sm:px-4 lg:px-4">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-4">
-          <div id="reader" width="600px"></div>
+          <!-- <div id="reader" width="600px"></div> -->
+          <div id="reader" style="width:300px; height:300px;"></div>
 
         </div>
       </div>
@@ -17,10 +18,16 @@
   </div>
 
 
+
+
   <script>
+    let kode_pendaftaran = "";
+
     function onScanSuccess(decodedText, decodedResult) {
-      // handle the scanned code as you like, for example:
+      // Save the scanned code to kode_pendaftaran variable
+      kode_pendaftaran = decodedText;
       console.log(`Code matched = ${decodedText}`, decodedResult);
+      console.log(`Kode Pendaftaran = ${kode_pendaftaran}`);
     }
 
     function onScanFailure(error) {

@@ -4,66 +4,38 @@
       {{ __('Checkin') }}
     </h2>
   </x-slot>
+  <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
 
   <div class="py-12">
     <div class="px-4 mx-auto sm:px-4 lg:px-4">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-4">
-          <div id="reader" width="600px"></div>
-
+          <h1>QR Code Scanner</h1>
+          <div id="reader"></div>
+          <div id="result"></div>
         </div>
       </div>
     </div>
   </div>
-  <div id="reader" style="width:500px;height:500px;"></div>
-  <div id="qrcode" style="margin-top:15px;"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.0.4/html5-qrcode.min.js"></script>
-  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
   <script>
-    // Variable kode_pendaftaran
-    let kode_pendaftaran = "1234567890"; // Replace with the actual value
-
-    // Generate the QR code
-    let qrcode = new QRCode(document.getElementById("qrcode"), {
-      text: kode_pendaftaran,
-      width: 128,
-      height: 128
-    });
-
     function onScanSuccess(decodedText, decodedResult) {
-      // handle the scanned code as you like, for example:
+      // Handle the result here.
       console.log(`Code matched = ${decodedText}`, decodedResult);
+      document.getElementById('result').innerText = `Scanned result: ${decodedText}`;
     }
 
     function onScanFailure(error) {
-      // handle scan failure, usually better to ignore and keep scanning.
-      // for example:
+      // Handle the scan failure, usually better to ignore and keep scanning.
       console.warn(`Code scan error = ${error}`);
     }
 
-    // Request camera permission
-    navigator.mediaDevices.getUserMedia({
-        video: true
-      })
-      .then(function(stream) {
-        // Permission granted, initialize the scanner
-        let html5QrcodeScanner = new Html5QrcodeScanner(
-          "reader", {
-            fps: 10,
-            qrbox: {
-              width: 250,
-              height: 250
-            }
-          },
-          /* verbose= */
-          false);
-        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
-      })
-      .catch(function(err) {
-        console.error("Camera permission denied:", err);
+    let html5QrcodeScanner = new Html5QrcodeScanner(
+      "reader", {
+        fps: 10,
+        qrbox: 250
       });
+    html5QrcodeScanner.render(onScanSuccess, onScanFailure);
   </script>
-
 
 
 </x-app-layout>

@@ -15,9 +15,21 @@
       </div>
     </div>
   </div>
-
-
+  <div id="reader" style="width:500px;height:500px;"></div>
+  <div id="qrcode" style="margin-top:15px;"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.0.4/html5-qrcode.min.js"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
   <script>
+    // Variable kode_pendaftaran
+    let kode_pendaftaran = "1234567890"; // Replace with the actual value
+
+    // Generate the QR code
+    let qrcode = new QRCode(document.getElementById("qrcode"), {
+      text: kode_pendaftaran,
+      width: 128,
+      height: 128
+    });
+
     function onScanSuccess(decodedText, decodedResult) {
       // handle the scanned code as you like, for example:
       console.log(`Code matched = ${decodedText}`, decodedResult);

@@ -9,8 +9,7 @@
     <div class="px-4 mx-auto sm:px-4 lg:px-4">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-4">
-          <!-- <div id="reader" width="600px"></div> -->
-          <div id="reader" style="width:300px; height:300px;"></div>
+          <div id="reader" width="600px"></div>
 
         </div>
       </div>

@@ -17,16 +17,10 @@
   </div>
 
 
-
-
   <script>
-    let kode_pendaftaran = "";
-
     function onScanSuccess(decodedText, decodedResult) {
-      // Save the scanned code to kode_pendaftaran variable
-      kode_pendaftaran = decodedText;
+      // handle the scanned code as you like, for example:
       console.log(`Code matched = ${decodedText}`, decodedResult);
-      console.log(`Kode Pendaftaran = ${kode_pendaftaran}`);
     }
 
     function onScanFailure(error) {

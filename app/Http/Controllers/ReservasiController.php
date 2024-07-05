@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\reservation;
+
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 

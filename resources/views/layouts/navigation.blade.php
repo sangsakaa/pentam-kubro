@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('reservasi-kehadiran')" :active="request()->routeIs('reservasi-kehadiran')">
+                        {{ __('Reservasi kehadiran') }}
+                    </x-nav-link>
                     @else
                     <x-nav-link :href="route('form-daftar')" :active="request()->routeIs('form-daftar')">
                         {{ __('Form Pendaftaran') }}

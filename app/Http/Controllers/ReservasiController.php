@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
-
 class ReservasiController extends Controller
 {
     public function checkin()
@@ -48,17 +47,23 @@ class ReservasiController extends Controller
                 $qrCode = QrCode::format('png')->size(300)->generate($peserta->kode_pendaftaran);
 
                 // Define the path to save the QR code image
-                $path = public_path('iqcode_peserta/' . $peserta->kode_pendaftaran . '.png');
+                $path = public_path('img-qr-peserta/' . $peserta->kode_pendaftaran . '.png');
 
                 // Save the QR code image to the specified path
                 file_put_contents($path, $qrCode);
             } catch (\Exception $e) {
-
+                // Handle exceptions if needed
                 continue;
             }
         }
 
-        return redirect('reservasi');
 
+        // return redirect('reservasi');
+    }
+    public function index()
+    {
+        $reservation = reservation::query()
+            ->join('rombongan', 'rombongan.kode_pendaftaran', 'reservations.qr_code')->get();
+        return view('admin.reservasi.index', compact('reservation'));
     }
 }

@@ -37,6 +37,7 @@ Route::get('/cetak-kartu/{kode_pendaftaran}', [RombonganController::class, 'down
 Route::get('/reservasi', [ReservasiController::class, 'checkin']);
 Route::post('/reservasi-qr', [ReservasiController::class, 'store']);
 Route::get('/generate-reservasi-qr', [ReservasiController::class, 'generateQR']);
+Route::get('/reservasi-kehadiran', [ReservasiController::class, 'index'])->name('reservasi-kehadiran');
 
 
 require __DIR__.'/auth.php';

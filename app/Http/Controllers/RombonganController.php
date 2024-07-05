@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 
+
 class RombonganController extends Controller
 {
     public function store(Request $request)
@@ -302,7 +303,6 @@ class RombonganController extends Controller
             // If there is an error, return a JSON response with the error message
             return response()->json(['error' => 'Tidak dapat mengambil data wilayah'], $responseProv->status());
         }
-
-
     }
+    
 }

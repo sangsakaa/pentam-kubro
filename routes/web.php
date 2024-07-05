@@ -3,7 +3,6 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\RombonganController;
-use App\Models\Rombongan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +35,7 @@ Route::get('/cetak-kartu/{kode_pendaftaran}', [RombonganController::class, 'down
 
 // RESERVASI
 Route::get('/reservasi', [ReservasiController::class, 'checkin']);
+Route::post('/reservasi-qr', [ReservasiController::class, 'store']);
 
 
 require __DIR__.'/auth.php';

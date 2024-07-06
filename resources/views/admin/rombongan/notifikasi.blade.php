@@ -49,19 +49,10 @@
           <h1>QR Code</h1>
           <div>
             @if($kode_pendaftaran && $kode_pendaftaran->kode_pendaftaran)
-            <a href="/generate-reservasi-qr" class=" copy-button-1 rounded-md">
+            <a href="/generate-reservasi-qr" target="_blank" class=" copy-button-1  rounded-md">
               Generate Barcode
             </a>
-            @php
-            $qrCodePath = 'storage/qrcodes/' . $kode_pendaftaran->kode_pendaftaran . '.svg';
-            @endphp
-            @if(File::exists(public_path($qrCodePath)))
-            <img src="{{ asset($qrCodePath) }}" alt="QR Code">
-
-            @else
-            <img src="{{ asset($qrCodePath) }}" alt="QR Code">
-
-            @endif
+            <img width="100px" src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(storage_path('app/public/qrcodes/' . $kode_pendaftaran->first()->kode_pendaftaran. '.svg'))) }}" alt="QR Code">
             @endif
             <span>
               Kode Pendaftaran : <br>

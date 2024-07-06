@@ -48,7 +48,12 @@
         <div class="p-12">
           <h1>QR Code</h1>
           <div>
+            @if($kode_pendaftaran && $kode_pendaftaran->kode_pendaftaran)
+            <a href="/generate-reservasi-qr" target="_blank" class=" copy-button-1  rounded-md">
+              Generate Barcode
+            </a>
             <img src="{{ asset('storage/qrcodes/' . $kode_pendaftaran->kode_pendaftaran . '.svg') }}" alt="QR Code">
+            @endif
 
             <span>
               Kode Pendaftaran : <br>
@@ -92,6 +97,7 @@
               <a href="/cetak-kartu/{{$kode_pendaftaran->kode_pendaftaran}}" target="_blank" class=" copy-button-1  rounded-md">
                 Download Kartu Peserta
               </a>
+
               <button class="copy-button" onclick="copyToClipboard()">Copy Kode Pendaftaran</button>
               <style>
                 .copy-button {

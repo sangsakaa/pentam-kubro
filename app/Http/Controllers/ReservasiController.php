@@ -63,7 +63,38 @@ class ReservasiController extends Controller
     public function index()
     {
         $reservation = reservation::query()
-            ->join('rombongan', 'rombongan.kode_pendaftaran', 'reservations.qr_code')->get();
+            ->join('rombongan', 'rombongan.kode_pendaftaran', 'reservations.qr_code')
+            ->select(
+                'rombongan.kode_pendaftaran',
+                'rombongan.nama',
+                'rombongan.jumlah_peserta',
+                'rombongan.jumlah_peserta_remaja',
+                'rombongan.jumlah_peserta_kanak',
+                'rombongan.jumlah_peserta_ibu',
+                'rombongan.jumlah_peserta_bapak',
+                'rombongan.province',
+                'rombongan.kabupaten',
+                'rombongan.kecamatan',
+                'rombongan.tanggal_pulang',
+                'rombongan.jenis_lokasi',
+                'rombongan.nama_lokasi',
+                'rombongan.biaya',
+                'rombongan.no_hp_ketua',
+                'rombongan.gelombang_acara',
+                'rombongan.tempat_acara',
+                'rombongan.saran',
+                'rombongan.kendaraan',
+                'rombongan.tanggal_berangkat',
+                'reservations.id'
+            )
+            ->get();
+
+
         return view('admin.reservasi.index', compact('reservation'));
+    }
+    public function destroy(Reservation $reservation)
+    {
+        Reservation::destroy($reservation->id);
+        return redirect()->back();
     }
 }

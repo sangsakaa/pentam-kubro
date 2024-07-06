@@ -118,6 +118,7 @@ class RombonganController extends Controller
     {
         // dd($kode_pendaftaran);
         $kode_pendaftaran = Rombongan::where('kode_pendaftaran', $kode_pendaftaran)->first();
+    
         return view('admin.rombongan.notifikasi', compact('kode_pendaftaran'));
     }
     public function LayoutKartu($kode_pendaftaran)

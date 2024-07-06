@@ -16,8 +16,6 @@
       </div>
     </div>
   </div>
-
-
   <script>
     function onScanSuccess(decodedText, decodedResult) {
       // Handle the result here.
@@ -60,8 +58,4 @@
       });
     html5QrcodeScanner.render(onScanSuccess, onScanFailure);
   </script>
-
-
-
-
 </x-app-layout>

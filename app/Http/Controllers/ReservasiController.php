@@ -8,6 +8,7 @@ use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\File;
 
 class ReservasiController extends Controller
 {
@@ -41,23 +42,38 @@ class ReservasiController extends Controller
     {
         $grafikPeserta = Rombongan::get();
 
-        foreach ($grafikPeserta as $peserta) {
-            try {
-                // Generate the QR code for each participant
-                $qrCode = QrCode::format('png')->size(300)->generate($peserta->kode_pendaftaran);
+        // Define the directory path for QR codes
+        $qrCodeDirectory = storage_path('app/public/qrcodes');
 
-                // Define the path to save the QR code image
-                $path = public_path('img-qr-peserta/' . $peserta->kode_pendaftaran . '.png');
-
-                // Save the QR code image to the specified path
-                file_put_contents($path, $qrCode);
-            } catch (\Exception $e) {
-                // Handle exceptions if needed
-                continue;
-            }
+        // Check if the directory exists, if not, create it
+        if (!File::exists($qrCodeDirectory)) {
+            File::makeDirectory($qrCodeDirectory, 0755, true);
         }
 
+        // Array to hold file paths of generated QR codes
+        $filePaths = [];
 
+        // Loop through each participant and generate a QR code
+        foreach ($grafikPeserta as $peserta) {
+            // Get the kode_pendaftaran for the current participant
+            $kodePendaftaran = $peserta->kode_pendaftaran;
+
+            // Define the file path for the QR code SVG
+            $filePath = 'qrcodes/' . $kodePendaftaran . '.svg';
+
+            // Generate the QR code and save it as an SVG in public storage
+            QrCode::format('svg')->size(300)->errorCorrection('L')->generate($kodePendaftaran, storage_path('app/public/' . $filePath));
+
+            // Add the file path to the array
+            $filePaths[] = asset('storage/' . $filePath);
+        }
+
+        // Return a JSON response with a success message and the file paths of generated QR codes
+        // return response()->json([
+        //     'message' => 'QR codes generated successfully',
+        //     'file_paths' => $filePaths
+        // ])->back();
+        return redirect()->back();
         // return redirect('reservasi');
     }
     public function index()

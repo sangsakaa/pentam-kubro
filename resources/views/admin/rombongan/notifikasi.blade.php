@@ -48,12 +48,12 @@
         <div class="p-12">
           <h1>QR Code</h1>
           <div>
+            <img src="{{ asset('storage/qrcodes/' . $kode_pendaftaran->kode_pendaftaran . '.svg') }}" alt="QR Code">
 
             <span>
               Kode Pendaftaran : <br>
             </span>
             <span class="font-semibold text-lg" id="kodePendaftaran">
-              {{$kode_pendaftaran->kode_pendaftaran}} <br>
               {{$kode_pendaftaran->nama}} <br>
             </span>
             <span>

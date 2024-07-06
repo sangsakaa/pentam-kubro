@@ -126,6 +126,8 @@
   <span class="kode_pen">
     Kode : {{$grafikPeserta->first()->kode_pendaftaran}}
   </span>
+  <span>
+  </span>
   <span class="kode_pen">
     Acara :
 
@@ -191,5 +193,15 @@
           @endforeach
       </tbody>
     </table>
+    <style>
+      .qrcode {
+        width: 10px;
+        height: 10px;
+        margin-top: 10px;
+      }
+    </style>
+    <div class="qrcode">
+      <img width="100px" src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(storage_path('app/public/qrcodes/' . $grafikPeserta->first()->kode_pendaftaran. '.svg'))) }}" alt="QR Code">
+    </div>
   </div>
 </div>

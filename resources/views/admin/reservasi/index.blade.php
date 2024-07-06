@@ -5,6 +5,7 @@
     </h2>
   </x-slot>
 
+
   <div class="py-12">
     <meta http-equiv="refresh" content="1">
     <div class="px-4 mx-auto sm:px-4 lg:px-4">

@@ -8,7 +8,7 @@
   <div class="py-4 h1" id="success-message">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-12">
+        <div class="p-4">
           <style>
             .h1 {
               background-color: rgba(7, 75, 36, 255);
@@ -33,39 +33,43 @@
   <div class="py-2 px-2">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-12">
+        <div class="p-4">
           <div class="  grid grid-cols-1 gap-2">
             <a href="/form-daftar" class=" copy-button-1">kembali ke Form Pendaftaran</a>
           </div>
         </div>
-
       </div>
     </div>
   </div>
   <div class="py-2 px-2">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-12">
-          <h1>QR Code</h1>
+        <div class="py-6 px-2">
           <div>
-            @if($kode_pendaftaran && $kode_pendaftaran->kode_pendaftaran)
+            @if ($kode_pendaftaran->count() > 0 && file_exists(storage_path('app/public/qrcodes/' . $kode_pendaftaran->first()->kode_pendaftaran . '.svg')))
+            <div class=" grid justify-center justify-items-center">
+              <img width="150px" src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(storage_path('app/public/qrcodes/' . $kode_pendaftaran->first()->kode_pendaftaran . '.svg'))) }}" alt="QR Code">
+            </div>
+            @else
             <a href="/generate-reservasi-qr" target="_blank" class=" copy-button-1  rounded-md">
               Generate Barcode
             </a>
-            <img width="100px" src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(storage_path('app/public/qrcodes/' . $kode_pendaftaran->first()->kode_pendaftaran. '.svg'))) }}" alt="QR Code">
             @endif
-            <span>
-              Kode Pendaftaran : <br>
-            </span>
-            <span class="font-semibold text-lg" id="kodePendaftaran">
-              {{$kode_pendaftaran->nama}} <br>
-            </span>
-            <span>
-              Imam Jamah'ah / Ketua Rombongan : <br>
-              <p class="font-semibold uppercase">
-                {{$kode_pendaftaran->nama}}
-              </p>
-            </span>
+            <div class=" grid justify-center justify-items-cneter text-center">
+              <span>
+                Kode Pendaftaran : <br>
+              </span>
+              <span class="font-semibold text-lg" id="kodePendaftaran">
+                {{$kode_pendaftaran->kode_pendaftaran}} <br>
+                <span class=" ">
+                  {{$kode_pendaftaran->nama}}
+                </span>
+                <br>
+              </span>
+              <span>
+                Imam Jamah'ah / Ketua Rombongan
+              </span>
+            </div>
 
             <script>
               function copyToClipboard() {
@@ -92,44 +96,44 @@
                 alert("Kode Pendaftaran copied to clipboard: " + kodePendaftaran);
               }
             </script>
-            <div class="  ">
+            <div class=" grid justify-center justify-items-center  ">
               <a href="/cetak-kartu/{{$kode_pendaftaran->kode_pendaftaran}}" target="_blank" class=" copy-button-1  rounded-md">
                 Download Kartu Peserta
               </a>
-
               <button class="copy-button" onclick="copyToClipboard()">Copy Kode Pendaftaran</button>
-              <style>
-                .copy-button {
-                  background-color: #4CAF50;
-                  color: white;
-                  border: none;
-                  padding: 10px 20px;
-                  text-align: center;
-                  text-decoration: none;
-                  display: inline-block;
-                  font-size: 16px;
-                  margin: 4px 2px;
-                  cursor: pointer;
-                  border-radius: 4px;
-                }
 
-                .copy-button-1 {
-                  background-color: purple;
-                  color: white;
-                  border: none;
-                  padding: 10px 20px;
-                  text-align: center;
-                  text-decoration: none;
-                  display: inline-block;
-                  font-size: 16px;
-                  margin: 4px 2px;
-                  cursor: pointer;
-                  border-radius: 4px;
-                }
-              </style>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <style>
+      .copy-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      .copy-button-1 {
+        background-color: purple;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+    </style>
 </x-app-layout>

@@ -58,7 +58,7 @@
             @if(File::exists(public_path($qrCodePath)))
             <img src="{{ asset($qrCodePath) }}" alt="QR Code">
             @else
-            <img src="{{ asset('images/placeholder.svg') }}" alt="Placeholder QR Code">
+            <img src="{{ asset('qrcodes/placeholder.svg') }}" alt="Placeholder QR Code">
             @endif
             @endif
             <span>

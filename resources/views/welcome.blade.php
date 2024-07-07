@@ -52,7 +52,6 @@
         svg,
         video {
             display: block;
-            vertical-align: middle
         }
 
         video {
@@ -183,9 +182,9 @@
             overflow: hidden
         }
 
-        .p-6 {
+        /* .p-6 {
             padding: 1.5rem
-        }
+        } */
 
         .py-4 {
             padding-top: 1rem;
@@ -397,13 +396,25 @@
                 color: rgba(107, 114, 128, var(--tw-text-opacity))
             }
         }
-    </style>
 
-    <style>
         body {
             font-family: 'Nunito', sans-serif;
         }
+
+        #link {
+            text-decoration: none;
+        }
+
+        .link {
+            text-decoration: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
     </style>
+
+
 </head>
 
 <body class="antialiased">
@@ -439,28 +450,71 @@
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
                                 <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                             </svg>
-                            <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://pentam.sangsaka.my.id/form-daftar" class="underline text-gray-900 dark:text-white">Daftar Perserta</a></div>
+                            <style>
+                                #link {
+                                    text-decoration: none;
+                                }
+                            </style>
+                            <div class="ml-4 text-lg leading-7 font-semibold"><a id="link" href="https://pentam.sangsaka.my.id/form-daftar" class="underline text-gray-900 dark:text-white">Daftar Perserta</a></div>
                         </div>
                         <div class="ml-2">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                <p class=" justified-text ">
+                                <p>
                                     Selamat datang Jama'ah Mujahadah Kubro, <br>
-                                    Silahkan lakukan pengisian pendaftaran peserta dengan benar di bawah ini : <br>NB : *berikan saran kepada panitia terhadap pelayanan dan fasilitas yang ada *setelah pengisian peserta wajib mengambil kartu peserta di panitia dengan bukti formulir pendaftaran online.⁠setelah pendaftaran wajib mengambil kartu peserta di stand penerimaan tamu
+                                </p>
+                                <p class=" justifed-text">
+                                    Silahkan lakukan pengisian pendaftaran peserta dengan benar di bawah ini
+                                </p>
+                                <p class=" justified-text ">
+                                    NB :
+                                    <br>Setelah pengisian peserta wajib mengambil kartu peserta di panitia dengan bukti formulir pendaftaran online.⁠setelah pendaftaran wajib mengambil kartu peserta di stand penerimaan tamu
                                 </p>
                                 <span>
-                                    <a href="https://pentam.sangsaka.my.id/form-daftar">
+                                    <style>
+                                        .link2 {
+                                            text-decoration: none;
+                                        }
+
+                                        p.justifed-text::before {
+                                            content: "1. ";
+                                        }
+
+                                        .justified-text {
+                                            text-align: justify;
+                                        }
+                                    </style>
+                                    <a class="link" href="https://pentam.sangsaka.my.id/form-daftar">
                                         <button>DAFTAR PESERTA KUBRO</button>
                                     </a>
                                 </span>
                             </div>
                         </div>
                     </div>
+                    <style>
+                        .p-6 {
+                            padding: 1.5rem;
+                        }
+
+                        button {
+                            background-color: #1e90ff;
+                            border: none;
+                            color: white;
+                            padding: 15px 32px;
+                            text-align: center;
+                            text-decoration: none;
+                            display: inline-block;
+                            font-size: 16px;
+                            margin: 4px 2px;
+                            cursor: pointer;
+
+                        }
+                    </style>
                     <div class="p-6">
                         <div class="flex items-center">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
                                 <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                             </svg>
-                            <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://pentam.sangsaka.my.id/form-daftar" class="underline text-gray-900 dark:text-white">Cek Kode Pendaftaran</a></div>
+                            <div class="ml-4 text-lg leading-7 font-semibold"><a id="link" href="https://pentam.sangsaka.my.id/form-daftar" class="underline text-gray-900 dark:text-white">Cek Kode Pendaftaran</a></div>
                         </div>
                         <div class="ml-2">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
@@ -473,7 +527,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                 <div class="text-center text-sm text-gray-500 sm:text-left">
                     <div class="flex items-center">
@@ -481,14 +534,14 @@
                             <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
 
-                        <a href="https://laravel.bigcartel.com" class="ml-1 underline">
+                        <a id="link" href="https://laravel.bigcartel.com" class="ml-1 underline">
                             Shop
                         </a>
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
                             <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                         </svg>
 
-                        <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
+                        <a id="link" href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
                             Sponsor
                         </a>
                     </div>

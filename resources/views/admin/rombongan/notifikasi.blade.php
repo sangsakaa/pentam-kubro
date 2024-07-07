@@ -76,6 +76,7 @@
               <a href="/generate-reservasi-qr" class=" copy-button-1  rounded-md">
                 Generate Barcode
               </a>
+              <span>KLIK TOMBOL GENERATE BARCODE <br> UNTUK MENDAPATAN KARTU</span>
             </div>
 
             @endif

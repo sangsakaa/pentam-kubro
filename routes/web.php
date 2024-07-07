@@ -39,6 +39,7 @@ Route::post('/reservasi-qr', [ReservasiController::class, 'store']);
 Route::get('/generate-reservasi-qr', [ReservasiController::class, 'generateQR']);
 Route::get('/reservasi-kehadiran', [ReservasiController::class, 'index'])->name('reservasi-kehadiran');
 Route::delete('/reservasi-kehadiran/{reservation}', [ReservasiController::class, 'destroy']);
+Route::get('/check-kode', [ReservasiController::class, 'checkKode']);
 
 
 require __DIR__.'/auth.php';

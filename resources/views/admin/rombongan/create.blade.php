@@ -6,9 +6,9 @@
     </h2>
   </x-slot>
   <!-- kop -->
-  <div class="py-2">
+  <div class="py-2 ">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+      <div class=" bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="px-2 py-2">
           <div>
             <style>
@@ -37,11 +37,11 @@
       </div>
     </div>
   </div>
-  <div class="">
+  <div class="sm:hidden hidden">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="px-2 py-2">
-          <div class="h1 px-2 py-2 text-white  flex grid-cols-1">
+          <div class="h1  px-2 py-2 text-white grid-cols-1">
             <div class="  text-justify text-sm  ">
               <p class=" justified-text ">
                 Selamat datang Jama'ah Mujahadah Kubro, <br>
@@ -54,7 +54,7 @@
     </div>
   </div>
   <!-- endkop -->
-  <div class="py-5">
+  <div class="py-2">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class=" px-4 py-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class=" grid">
@@ -103,7 +103,6 @@
               <option value="Hotel">Hotel</option>
               <option value="Homestay">Homestay</option>
               <option value="Kontrakan">Kontrakan</option>
-              <option value="Sepeda Motor">Sepeda Motor</option>
             </select>
             <input type="text" name="nama_lokasi" placeholder=" Lokasi Tempat Tinggal Selama Kubro">
             <input type="text" id="biaya" name="biaya" placeholder=" biaya">

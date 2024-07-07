@@ -113,4 +113,9 @@ class ReservasiController extends Controller
         Reservation::destroy($reservation->id);
         return redirect()->back();
     }
+    public function checkKode(Request $request)
+    {
+        $kode_pendaftaran = Rombongan::where('kode_pendaftaran', $request->kode_pendaftaran)->first();
+        return view('admin.reservasi.check_kode_pendaftaran', compact('kode_pendaftaran'));
+    }
 }

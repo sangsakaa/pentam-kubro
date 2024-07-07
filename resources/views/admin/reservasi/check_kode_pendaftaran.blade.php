@@ -105,27 +105,25 @@
             </div>
             <div class="grid justify-center justify-items-cneter text-center">
               <h1>Detail Pendaftaran</h1>
-              <div class=" grid grid-cols-4">
-                <div>
+              <div class=" grid grid-cols-4 text-xs">
+                <div class=" border gap-2">
                   <p> Remaja: <br> {{ $kode_pendaftaran['jumlah_peserta_remaja'] }}</p>
                 </div>
-                <div>
+                <div class=" border gap-2">
                   <p> Kanak: <br> {{ $kode_pendaftaran['jumlah_peserta_kanak'] }}</p>
                 </div>
-                <div>
+                <div class=" border gap-2">
                   <p> Ibu: <br>{{ $kode_pendaftaran['jumlah_peserta_ibu'] }}</p>
                 </div>
-                <div>
+                <div class=" border gap-2">
                   <p> Bapak: <br> {{ $kode_pendaftaran['jumlah_peserta_bapak'] }}</p>
                 </div>
               </div>
-              <p>Tanggal Pulang: {{ $kode_pendaftaran['tanggal_pulang'] }}</p>
 
-              <p>Gelombang Acara: <br> {{ implode(", ", json_decode($kode_pendaftaran['gelombang_acara'], true)) }}</p>
-              <p>Kendaraan: {{ $kode_pendaftaran['kendaraan'] }}</p>
-              <p>Tanggal Berangkat: {{ $kode_pendaftaran['tanggal_berangkat'] }}</p>
-              <p>Dibuat Pada: {{ $kode_pendaftaran['created_at'] }}</p>
-              <p>Diperbarui Pada: {{ $kode_pendaftaran['updated_at'] }}</p>
+              Datang : <br>{{ \Carbon\Carbon::parse($kode_pendaftaran['tanggal_berangkat'])->isoFormat('dddd, DD-MMMM-YYYY') }} <br>
+
+              Pulang : <br> {{ \Carbon\Carbon::parse($kode_pendaftaran['tanggal_pulang'])->isoFormat('dddd, DD-MMMM-YYYY') }}
+              <p class=" text-xs">Gelombang Acara: <br> {{ implode(", ", json_decode($kode_pendaftaran['gelombang_acara'], true)) }}</p>
             </div>
             @else
             <div class="grid justify-center justify-items-cneter text-center">

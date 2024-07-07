@@ -46,9 +46,9 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="py-6 px-2">
           <div>
-            @if ($kode_pendaftaran->count() > 0 && file_exists(storage_path('app/public/qrcodes/' . $kode_pendaftaran->first()->kode_pendaftaran . '.svg')))
+            @if ($kode_pendaftaran->count() > 0 && file_exists(storage_path('app/public/qrcodes/' . $kode_pendaftaran->kode_pendaftaran . '.svg')))
             <div class=" grid justify-center justify-items-center">
-              <img width="150px" src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(storage_path('app/public/qrcodes/' . $kode_pendaftaran->first()->kode_pendaftaran . '.svg'))) }}" alt="QR Code">
+              <img width="150px" src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(storage_path('app/public/qrcodes/' . $kode_pendaftaran->kode_pendaftaran . '.svg'))) }}" alt="QR Code">
             </div>
             @else
             <a href="/generate-reservasi-qr" target="_blank" class=" copy-button-1  rounded-md">

@@ -103,6 +103,7 @@
               <option value="Hotel">Hotel</option>
               <option value="Homestay">Homestay</option>
               <option value="Kontrakan">Kontrakan</option>
+              <option value="Sepeda Motor">Sepeda Motor</option>
             </select>
             <input type="text" name="nama_lokasi" placeholder=" Lokasi Tempat Tinggal Selama Kubro">
             <input type="text" id="biaya" name="biaya" placeholder=" biaya">

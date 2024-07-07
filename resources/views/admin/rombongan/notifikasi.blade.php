@@ -50,14 +50,9 @@
             <div class=" grid justify-center justify-items-center">
               <img width="150px" src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(storage_path('app/public/qrcodes/' . $kode_pendaftaran->kode_pendaftaran . '.svg'))) }}" alt="QR Code">
             </div>
-            @else
-            <a href="/generate-reservasi-qr" target="_blank" class=" copy-button-1  rounded-md">
-              Generate Barcode
-            </a>
-            @endif
             <div class=" grid justify-center justify-items-cneter text-center">
               <span>
-                Kode Pendaftaran : <br>
+                Kode Pendaftaran<br>
               </span>
               <span class="font-semibold text-lg" id="kodePendaftaran">
                 {{$kode_pendaftaran->kode_pendaftaran}} <br>
@@ -70,6 +65,21 @@
                 Imam Jamah'ah / Ketua Rombongan
               </span>
             </div>
+            <div class=" grid justify-center justify-items-center  ">
+              <a href="/cetak-kartu/{{$kode_pendaftaran->kode_pendaftaran}}" target="_blank" class=" copy-button-1  rounded-md">
+                Download Kartu Peserta
+              </a>
+              <button class="copy-button" onclick="copyToClipboard()">Copy Kode Pendaftaran</button>
+            </div>
+            @else
+            <div class=" grid justify-center justify-items-cneter text-center">
+              <a href="/generate-reservasi-qr" class=" copy-button-1  rounded-md">
+                Generate Barcode
+              </a>
+            </div>
+
+            @endif
+
 
             <script>
               function copyToClipboard() {
@@ -96,13 +106,7 @@
                 alert("Kode Pendaftaran copied to clipboard: " + kodePendaftaran);
               }
             </script>
-            <div class=" grid justify-center justify-items-center  ">
-              <a href="/cetak-kartu/{{$kode_pendaftaran->kode_pendaftaran}}" target="_blank" class=" copy-button-1  rounded-md">
-                Download Kartu Peserta
-              </a>
-              <button class="copy-button" onclick="copyToClipboard()">Copy Kode Pendaftaran</button>
 
-            </div>
           </div>
         </div>
       </div>

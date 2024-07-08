@@ -11,7 +11,7 @@
         <div class="p-4">
           <form action="/check-kode" method="get">
             <div class="grid gap-2">
-              <input type="number" name="kode_pendaftaran" class="w-full py-2" id="kode_pendaftaran" maxlength="20" title="Format harus 07-07-2024-000000001" required>
+              <input type="text" name="kode_pendaftaran" class="w-full py-2" id="kode_pendaftaran" maxlength="20" title="Format harus 07-07-2024-000000001" required>
               <button class="copy-button-1 bg-blue-700 text-white px-2 py-1">Cari Kode Pendaftaran</button>
             </div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>

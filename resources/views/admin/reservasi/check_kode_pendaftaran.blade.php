@@ -119,7 +119,6 @@
                   <p> Bapak: <br> {{ $kode_pendaftaran['jumlah_peserta_bapak'] }}</p>
                 </div>
               </div>
-
               Datang : <br>{{ \Carbon\Carbon::parse($kode_pendaftaran['tanggal_berangkat'])->isoFormat('dddd, DD-MMMM-YYYY') }} <br>
 
               Pulang : <br> {{ \Carbon\Carbon::parse($kode_pendaftaran['tanggal_pulang'])->isoFormat('dddd, DD-MMMM-YYYY') }}

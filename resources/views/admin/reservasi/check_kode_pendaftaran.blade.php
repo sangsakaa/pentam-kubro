@@ -11,7 +11,7 @@
         <div class="p-4">
           <form action="/check-kode" method="get">
             <div class="grid gap-2">
-              <input type="text" name="kode_pendaftaran" class="w-full py-2" id="kode_pendaftaran" maxlength="20" title="Format harus 07-07-2024-000000001" required>
+              <input type="text" placeholder="07-07-2024-000000001" name="kode_pendaftaran" class="w-full py-2 text-center" id="kode_pendaftaran" maxlength="20" title="Format harus 07-07-2024-000000001" required>
               <button class="copy-button-1 bg-blue-700 text-white px-2 py-1">Cari Kode Pendaftaran</button>
             </div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -78,10 +78,9 @@
       </div>
     </div>
   </div>
-
-  <div id="captureArea" class="py-2 px-2 w-full">
-    <div class="">
-      <div class=" bg-white  overflow-hidden shadow-sm sm:rounded-lg">
+  <div id="captureArea" class="py-4 px-2 w-full ">
+    <div class=" border-spacing-1  border-double border-black">
+      <div class=" bg-white rounded-lg  overflow-hidden shadow-sm sm:rounded-lg">
         <div class="py-6 px-2">
           <div>
             @if (!is_null($kode_pendaftaran) && $kode_pendaftaran->count() > 0 && file_exists(storage_path('app/public/qrcodes/' . $kode_pendaftaran->kode_pendaftaran . '.svg')))
@@ -114,21 +113,26 @@
                     <th class=" border">Bapak Bapak</th>
                   </tr>
                   <tr class=" border">
-                    <td class="border">{{$kode_pendaftaran->jumlah_peserta_remaja}}</td>
-                    <td class="border">{{$kode_pendaftaran->jumlah_peserta_kanak}}</td>
-                    <td class="border">{{$kode_pendaftaran->jumlah_peserta_ibu}}</td>
-                    <td class="border">{{$kode_pendaftaran->jumlah_peserta_bapak}}</td>
+                    <td class="border py-2 px-4">{{$kode_pendaftaran->jumlah_peserta_remaja}}</td>
+                    <td class="border py-2 px-4">{{$kode_pendaftaran->jumlah_peserta_kanak}}</td>
+                    <td class="border py-2 px-4">{{$kode_pendaftaran->jumlah_peserta_ibu}}</td>
+                    <td class="border py-2 px-4">{{$kode_pendaftaran->jumlah_peserta_bapak}}</td>
                   </tr>
-
                 </thead>
+                <tr>
+                  <td class=" py-2 font-semibold border" colspan="">Tanggal Datang</td>
+                  <td class=" py-2 font-semibold border text-left" colspan="3">
+                    : {{ \Carbon\Carbon::parse($kode_pendaftaran['tanggal_berangkat'])->locale('id')->isoFormat('dddd, DD-MMMM-YYYY') }}
+                  </td>
+                </tr>
+                <tr>
+                  <td class=" py-2 font-semibold border">Tanggal Pulang</td>
+                  <td class=" py-2 font-semibold border text-left" colspan="3">
+                    : {{ \Carbon\Carbon::parse($kode_pendaftaran->tanggal_pulang)->locale('id')->isoFormat('dddd, DD-MMMM-YYYY') }}
+                  </td>
+                </tr>
                 <tbody>
-
               </table>
-
-              Datang : <br>{{ \Carbon\Carbon::parse($kode_pendaftaran['tanggal_berangkat'])->isoFormat('dddd, DD-MMMM-YYYY') }} <br>
-
-              Pulang : <br> {{ \Carbon\Carbon::parse($kode_pendaftaran['tanggal_pulang'])->isoFormat('dddd, DD-MMMM-YYYY') }}
-              <p class=" text-xs">Gelombang Acara: <br> {{ implode(", ", json_decode($kode_pendaftaran['gelombang_acara'], true)) }}</p>
             </div>
             @else
             <div class="grid justify-center justify-items-cneter text-center">

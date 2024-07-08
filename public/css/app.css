@@ -862,6 +862,11 @@ select {
 .shrink-0 {
   flex-shrink: 0;
 }
+.border-spacing-1 {
+  --tw-border-spacing-x: 0.25rem;
+  --tw-border-spacing-y: 0.25rem;
+  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
+}
 .origin-top {
   transform-origin: top;
 }
@@ -979,6 +984,13 @@ select {
 }
 .border-t-0 {
   border-top-width: 0px;
+}
+.border-double {
+  border-style: double;
+}
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 .border-gray-100 {
   --tw-border-opacity: 1;

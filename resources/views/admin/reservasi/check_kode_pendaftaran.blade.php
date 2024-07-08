@@ -79,8 +79,8 @@
     </div>
   </div>
 
-  <div id="captureArea" class="py-2 px-2">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+  <div id="captureArea" class="py-2 px-2 w-full">
+    <div class="">
       <div class=" bg-white  overflow-hidden shadow-sm sm:rounded-lg">
         <div class="py-6 px-2">
           <div>
@@ -103,22 +103,28 @@
                 Imam Jamah'ah / Ketua Rombongan
               </span>
             </div>
-            <div class="grid justify-center justify-items-cneter text-center">
+            <div class=" w-full grid justify-center justify-items-cneter text-center">
               <h1>Detail Pendaftaran</h1>
-              <div class=" grid grid-cols-4 text-xs">
-                <div class=" border gap-2">
-                  <p> Remaja: <br> {{ $kode_pendaftaran['jumlah_peserta_remaja'] }}</p>
-                </div>
-                <div class=" border gap-2">
-                  <p> Kanak: <br> {{ $kode_pendaftaran['jumlah_peserta_kanak'] }}</p>
-                </div>
-                <div class=" border gap-2">
-                  <p> Ibu: <br>{{ $kode_pendaftaran['jumlah_peserta_ibu'] }}</p>
-                </div>
-                <div class=" border gap-2">
-                  <p> Bapak: <br> {{ $kode_pendaftaran['jumlah_peserta_bapak'] }}</p>
-                </div>
-              </div>
+              <table class=" text-xs w-full">
+                <thead>
+                  <tr class=" border">
+                    <th class=" border">Remaja</th>
+                    <th class=" border">Kanak Kanak</th>
+                    <th class=" border">Ibu Ibu</th>
+                    <th class=" border">Bapak Bapak</th>
+                  </tr>
+                  <tr class=" border">
+                    <td class="border">{{$kode_pendaftaran->jumlah_peserta_remaja}}</td>
+                    <td class="border">{{$kode_pendaftaran->jumlah_peserta_kanak}}</td>
+                    <td class="border">{{$kode_pendaftaran->jumlah_peserta_ibu}}</td>
+                    <td class="border">{{$kode_pendaftaran->jumlah_peserta_bapak}}</td>
+                  </tr>
+
+                </thead>
+                <tbody>
+
+              </table>
+
               Datang : <br>{{ \Carbon\Carbon::parse($kode_pendaftaran['tanggal_berangkat'])->isoFormat('dddd, DD-MMMM-YYYY') }} <br>
 
               Pulang : <br> {{ \Carbon\Carbon::parse($kode_pendaftaran['tanggal_pulang'])->isoFormat('dddd, DD-MMMM-YYYY') }}

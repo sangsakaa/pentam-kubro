@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckInController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\RombonganController;
@@ -40,6 +41,9 @@ Route::get('/generate-reservasi-qr', [ReservasiController::class, 'generateQR'])
 Route::get('/reservasi-kehadiran', [ReservasiController::class, 'index'])->name('reservasi-kehadiran');
 Route::delete('/reservasi-kehadiran/{reservation}', [ReservasiController::class, 'destroy']);
 Route::get('/check-kode', [ReservasiController::class, 'checkKode']);
+
+
+Route::get('/data-reservasi', [CheckInController::class, 'index'])->name('data-reservasi');
 
 
 require __DIR__.'/auth.php';

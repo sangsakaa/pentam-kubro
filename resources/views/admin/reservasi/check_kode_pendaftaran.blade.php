@@ -59,8 +59,6 @@
               });
             });
           </script>
-
-
           <script>
             document.getElementById('kode_pendaftaran').addEventListener('input', function(e) {
               let value = e.target.value.replace(/\D/g, '');
@@ -78,9 +76,29 @@
       </div>
     </div>
   </div>
-  <div id="captureArea" class="py-4 px-2 w-full ">
-    <div class=" border-spacing-1  border-double border-black">
-      <div class=" bg-white rounded-lg  overflow-hidden shadow-sm sm:rounded-lg">
+  <style>
+    .h1 {
+      background-color: rgba(7, 75, 36, 255);
+      color: white;
+
+    }
+  </style>
+  <div class=" pb-10 px-2 w-full shadow-md ">
+    <div class="  py-2 rounded-lg   px-2">
+      <div class="h1 px-2"></div>
+      <div id="captureArea" class="   bg-white rounded-lg  overflow-hidden shadow-md sm:rounded-lg">
+        <table class=" ">
+          <tr class="h1 ">
+            <td class="logo">
+              <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('/img/logo.png'))) }}" height="80px" width="50px" alt="Example Image">
+            </td>
+            <td>
+              <span class=" kop-1 text-xs">
+                PENERIMA TAMU MUJAHADAH KUBRO
+              </span>
+            </td>
+          </tr>
+        </table>
         <div class="py-6 px-2">
           <div>
             @if (!is_null($kode_pendaftaran) && $kode_pendaftaran->count() > 0 && file_exists(storage_path('app/public/qrcodes/' . $kode_pendaftaran->kode_pendaftaran . '.svg')))
@@ -102,15 +120,25 @@
                 Imam Jamah'ah / Ketua Rombongan
               </span>
             </div>
-            <div class=" w-full grid justify-center justify-items-cneter text-center">
+            <div class=" w-full grid grid-cols-1 justify-center justify-items-cneter text-center">
+              <style>
+                table {
+                  margin-top: 10px;
+                  width: 100%;
+                }
+
+                table.tr.th {
+                  margin-left: 10px;
+                }
+              </style>
               <h1>Detail Pendaftaran</h1>
-              <table class=" text-xs w-full">
+              <table class=" py-2  text-xs w-full">
                 <thead>
                   <tr class=" border">
-                    <th class=" border">Remaja</th>
-                    <th class=" border">Kanak Kanak</th>
-                    <th class=" border">Ibu Ibu</th>
-                    <th class=" border">Bapak Bapak</th>
+                    <th class=" border py-2">Remaja</th>
+                    <th class=" border py-2">Kanak2</th>
+                    <th class=" border py-2">Ibu2</th>
+                    <th class=" border py-2">Bapak2</th>
                   </tr>
                   <tr class=" border">
                     <td class="border py-2 px-4">{{$kode_pendaftaran->jumlah_peserta_remaja}}</td>
@@ -120,15 +148,21 @@
                   </tr>
                 </thead>
                 <tr>
-                  <td class=" py-2 font-semibold border" colspan="">Tanggal Datang</td>
-                  <td class=" py-2 font-semibold border text-left" colspan="3">
-                    : {{ \Carbon\Carbon::parse($kode_pendaftaran['tanggal_berangkat'])->locale('id')->isoFormat('dddd, DD-MMMM-YYYY') }}
+                  <td class=" text-center py-2 font-semibold border " colspan="4">
+                    <span>Gelombang Acara :</span> <br>
+                    {{ \Carbon\Carbon::parse($kode_pendaftaran['tanggal_berangkat'])->locale('id')->isoFormat('dddd, DD-MMMM-YYYY') }}
                   </td>
                 </tr>
                 <tr>
-                  <td class=" py-2 font-semibold border">Tanggal Pulang</td>
-                  <td class=" py-2 font-semibold border text-left" colspan="3">
-                    : {{ \Carbon\Carbon::parse($kode_pendaftaran->tanggal_pulang)->locale('id')->isoFormat('dddd, DD-MMMM-YYYY') }}
+                  <td class=" text-center py-2 font-semibold border " colspan="4">
+                    <span>Gelombang Acara :</span> <br>
+                    {{ \Carbon\Carbon::parse($kode_pendaftaran->tanggal_pulang)->locale('id')->isoFormat('dddd, DD-MMMM-YYYY') }}
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4" class=" border text-center px-1">
+                    <span>Gelombang Acara :</span> <br>
+                    {{ implode(', ', json_decode($kode_pendaftaran['gelombang_acara'], true)) }}
                   </td>
                 </tr>
                 <tbody>
@@ -137,7 +171,7 @@
             @else
             <div class="grid justify-center justify-items-cneter text-center">
               <a href="/generate-reservasi-qr" class="copy-button-1 rounded-md">
-                Generate Barcode
+                Kembali Ke Beranda
               </a>
               <span>KLIK TOMBOL GENERATE BARCODE <br> UNTUK MENDAPATAN KARTU</span>
             </div>
@@ -167,9 +201,14 @@
                 alert("Kode Pendaftaran copied to clipboard: " + kodePendaftaran);
               }
             </script>
-
+          </div>
+          <div class="h1 h-10 ">
+            <div class=" text-xs justify-between text-center py-4">
+              PANITIA PELAKSANA MUJAHADAH KUBRO &copy2024
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>

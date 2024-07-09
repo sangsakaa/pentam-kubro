@@ -16,6 +16,19 @@
       </div>
     </div>
   </div>
+
+  @if (session('success'))
+  <script>
+    Toastify({
+      text: "Data berhasil diupdate",
+      className: "success",
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      }
+    }).showToast();
+  </script>
+  @endif
+
   <script>
     function onScanSuccess(decodedText, decodedResult) {
       // Handle the result here.

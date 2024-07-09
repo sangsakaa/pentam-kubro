@@ -22,6 +22,8 @@
     },
     "dependencies": {
         "html2canvas": "^1.4.1",
-        "sweetalert2": "^11.11.0"
+        "sweetalert2": "^11.11.0",
+        "toastify-js": "^1.12.0",
+        "toastr": "^2.1.4"
     }
 }

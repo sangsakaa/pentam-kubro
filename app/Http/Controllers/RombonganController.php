@@ -111,7 +111,7 @@ class RombonganController extends Controller
         } else {
             return response()->json(['error' => 'Unable to fetch data'], 500);
         }
-        dd($response);
+        // dd($response);
     }
     
     public function Notif($kode_pendaftaran)

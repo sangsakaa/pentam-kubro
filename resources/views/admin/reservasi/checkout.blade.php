@@ -9,7 +9,14 @@
     <div class="px-4 mx-auto sm:px-4 lg:px-4">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-4">
-
+          <livewire:reservation-show />
+          <script>
+            document.addEventListener('livewire:load', function() {
+              setInterval(function() {
+                Livewire.emit('refreshReservations');
+              }, 1); // Adjust the interval (5000 ms = 5 seconds) as needed
+            });
+          </script>
 
         </div>
       </div>

@@ -35,8 +35,9 @@ class ReservasiController extends Controller
         $reservation->qr_code = $request->input('qrCode');
         // Add other necessary fields here
         $reservation->save();
+        return redirect()->back()->with('success', 'Data berhasil diupdate');
 
-        return response()->json(['success' => 'Reservation created successfully.'], 201);
+        // return response()->json(['success' => 'Reservation created successfully.'], 201)->with('success');
     }
     public function generateQR()
     {

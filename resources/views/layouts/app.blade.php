@@ -25,10 +25,6 @@
     <!-- Include Toastify CSS -->
     <link rel="stylesheet" href="{{ asset('node_modules/toastify-js/src/toastify.css') }}">
 
-
-
-    @livewireStyles
-
 </head>
 
 <body class="font-sans antialiased">
@@ -50,7 +46,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <!-- Include Toastify JS -->
     <script src="{{ asset('node_modules/toastify-js/src/toastify.js') }}"></script>
-    @livewireScripts
 
 </body>
 

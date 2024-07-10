@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CheckInController;
+use App\Http\Controllers\WhatsAppController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\RombonganController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,9 @@ Route::get('/check-kode', [ReservasiController::class, 'checkKode']);
 
 
 Route::get('/data-reservasi', [CheckInController::class, 'index'])->name('data-reservasi');
+
+
+Route::post('/send-message', [WhatsAppController::class, 'sendMessage']);
 
 
 require __DIR__.'/auth.php';

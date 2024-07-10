@@ -130,21 +130,58 @@
                 table.tr.th {
                   margin-left: 10px;
                 }
+
+                .jamaah {
+                  padding-top: 2px;
+                  border: solid black;
+                }
+
+                th {
+                  vertical-align: middle;
+                  /* atau top untuk perataan atas, bottom untuk perataan bawah */
+                  text-align: center;
+                  /* opsional, jika ingin perataan teks di tengah secara horizontal */
+                }
+
+                .pad-2 {
+                  padding: 2px;
+                  margin-top: 2px;
+                  border: black solid;
+                  padding-top: 2px;
+                  padding-bottom: 2px;
+
+
+                }
               </style>
               <h1>Detail Pendaftaran</h1>
-              <table class=" py-2  text-xs w-full">
+              <table class=" py-2  text-xs w-full mb-4">
                 <thead>
-                  <tr class=" border">
-                    <th class=" border py-2">Remaja</th>
-                    <th class=" border py-2">Kanak2</th>
-                    <th class=" border py-2">Ibu2</th>
-                    <th class=" border py-2">Bapak2</th>
+                  <tr>
+                    <th colspan="4" class="jamaah ">Jama'ah</th>
                   </tr>
                   <tr class=" border">
-                    <td class="border py-2 px-4">{{$kode_pendaftaran->jumlah_peserta_remaja}}</td>
-                    <td class="border py-2 px-4">{{$kode_pendaftaran->jumlah_peserta_kanak}}</td>
-                    <td class="border py-2 px-4">{{$kode_pendaftaran->jumlah_peserta_ibu}}</td>
-                    <td class="border py-2 px-4">{{$kode_pendaftaran->jumlah_peserta_bapak}}</td>
+                    <th class=" border pad-2">Remaja</th>
+                    <th class=" border pad-2">Kanak2</th>
+                    <th class=" border pad-2">Ibu2</th>
+                    <th class=" border pad-2">Bapak2</th>
+                  </tr>
+                  <tr class=" border">
+                    <td class="border pad-2 px-4">{{$kode_pendaftaran->jumlah_peserta_remaja}}</td>
+                    <td class="border pad-2 px-4">{{$kode_pendaftaran->jumlah_peserta_kanak}}</td>
+                    <td class="border pad-2 px-4">{{$kode_pendaftaran->jumlah_peserta_ibu}}</td>
+                    <td class="border pad-2 px-4">{{$kode_pendaftaran->jumlah_peserta_bapak}}</td>
+                  </tr>
+                  <tr>
+                    <th colspan="4" class="jamaah ">
+                      <span>Jumlah Peserta</span>
+                      <br>
+                      {{
+        $kode_pendaftaran->jumlah_peserta_remaja +
+        $kode_pendaftaran->jumlah_peserta_kanak +
+        $kode_pendaftaran->jumlah_peserta_ibu +
+        $kode_pendaftaran->jumlah_peserta_bapak
+    }}
+                    </th>
                   </tr>
                 </thead>
                 <tr>

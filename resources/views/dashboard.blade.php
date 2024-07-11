@@ -12,7 +12,7 @@
           <div>
           </div>
           <div class=" px-4 py-2">
-            <table class="   w-full">
+            <table class=" text-sm   w-full">
               <thead>
                 <tr class=" border">
                   <th class="  border" rowspan="2">Kode Pendaftaran</th>
@@ -52,6 +52,9 @@
                   </td>
                 </tr>
                 @endforeach
+                <tr>
+                  <td colspan="8">{{$grafikPeserta->links()}}</td>
+                </tr>
               </tbody>
             </table>
           </div>

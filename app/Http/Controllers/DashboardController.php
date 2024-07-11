@@ -26,7 +26,7 @@ class DashboardController extends Controller
             }
 
             // Ambil semua data dari model Rombongan
-            $grafikPeserta = Rombongan::orderby('created_at')->paginate(1);
+            $grafikPeserta = Rombongan::orderby('created_at')->paginate(10);
 
             // Iterate through $grafikPeserta and translate province codes to province names
             foreach ($grafikPeserta as $peserta) {

@@ -14,7 +14,7 @@ class RombonganController extends Controller
 {
     public function store(Request $request)
  {
-        // dd($request->all());
+        dd($request->all());
         $request->validate([
             'province' => 'required',
             'kabupaten' => 'required',
@@ -67,6 +67,7 @@ class RombonganController extends Controller
         $rombongan->tanggal_pulang = $request->input('tanggal_pulang');
         $rombongan->save();
         return redirect('/notifikasi/' . $kode_pendaftaran)->with('success', 'pengisian berhasil');
+        
     }
     public function create()
     {

@@ -11,6 +11,7 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
+        
         $prov = 'https://wilayah.id/api/provinces.json';
         $responseProv = Http::get($prov);
 
@@ -56,8 +57,33 @@ class DashboardController extends Controller
                     } else {
                         $peserta->regency_name = 'Unknown';
                     }
+
+                    // Ambil kode kecamatan
+                    $regencyCode = $peserta->kabupaten;
+                    $kec = "https://wilayah.id/api/districts/{$regencyCode}.json";
+                    $responseKec = Http::get($kec);
+
+                    if ($responseKec->successful()) {
+                        $kecamatan = $responseKec->json(); // Asumsikan $kecamatan berisi array kode dan nama kecamatan
+                        $kecamatanMap = [];
+
+                        // Extract the districts data
+                        foreach ($kecamatan['data'] as $kec) {
+                            $kecamatanMap[$kec['code']] = $kec['name'];
+                        }
+
+                        // Translate district codes to district names
+                        if (isset($kecamatanMap[$peserta->kecamatan])) {
+                            $peserta->district_name = $kecamatanMap[$peserta->kecamatan];
+                        } else {
+                            $peserta->district_name = 'Unknown';
+                        }
+                    } else {
+                        $peserta->district_name = 'Unknown';
+                    }
                 } else {
                     $peserta->regency_name = 'Unknown';
+                    $peserta->district_name = 'Unknown';
                 }
             }
 

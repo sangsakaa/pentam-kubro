@@ -15,9 +15,11 @@
             <table class=" text-sm   w-full">
               <thead>
                 <tr class=" border">
+                  <th class="  border" rowspan="2">No</th>
                   <th class="  border" rowspan="2">Kode Pendaftaran</th>
+                  <th class="  border" rowspan="2">Gelombang Acara</th>
                   <th class=" border" rowspan="2">Ketua <br> Rombongan</th>
-                  <th class=" border" rowspan="2">Provinsi <br>Kota / Kabupaten</th>
+                  <th class=" border" rowspan="2">Provinsi <br>Kota / Kabupaten Kecamatan</th>
                   <th class=" border" colspan="4">Peserta Mujahadah</th>
                   <th class=" border" rowspan="2">Total</th>
                 </tr>
@@ -31,14 +33,20 @@
               <tbody>
                 @foreach($grafikPeserta as $peserta)
                 <tr class=" hover:bg-green-200 border even:bg-gray-100">
-
+                  <td class="  border text-center">
+                    {{ $loop->iteration }}
+                  </td>
                   <td class="  border text-center">
                     {{ $peserta->kode_pendaftaran }}
+                  </td>
+                  <td class="  border text-center">
+                    {{ implode(', ', json_decode($peserta['gelombang_acara'], true)) }}
                   </td>
                   <td class=" border text-left capitalize px-2">{{ $peserta->nama}}</td>
                   <td class=" border text-center">
                     {{ $peserta->province_name }} <br>
                     {{ $peserta->regency_name }}
+                    Kec. {{ $peserta->district_name }}
                   </td>
                   <td class=" border text-center">{{ $peserta->jumlah_peserta_bapak }}</td>
                   <td class=" border text-center">{{ $peserta->jumlah_peserta_ibu }}</td>

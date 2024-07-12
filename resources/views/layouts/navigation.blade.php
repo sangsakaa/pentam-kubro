@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('reservasi-kehadiran')" :active="request()->routeIs('reservasi-kehadiran')">
                         {{ __('Reservasi kehadiran') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('laporan-gelombang')" :active="request()->routeIs('laporan-gelombang')">
+                        {{ __('Laporan Gelombang') }}
+                    </x-nav-link>
                     @else
                     <x-nav-link :href="route('form-daftar')" :active="request()->routeIs('form-daftar')">
                         {{ __('Form Pendaftaran') }}

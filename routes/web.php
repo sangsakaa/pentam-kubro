@@ -5,6 +5,7 @@ use App\Http\Controllers\CheckInController;
 use App\Http\Controllers\WhatsAppController;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\RombonganController;
 
@@ -48,7 +49,7 @@ Route::get('/check-kode', [ReservasiController::class, 'checkKode']);
 Route::get('/data-reservasi', [CheckInController::class, 'index'])->name('data-reservasi');
 
 
-Route::get('/send-message', [WhatsAppController::class, 'sendMessage']);
+Route::get('/laporan-gelombang', [LaporanController::class, 'LaporanGelombang'])->name('laporan-gelombang');
 
 
 require __DIR__.'/auth.php';

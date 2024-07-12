@@ -61,7 +61,7 @@
                 </tr>
                 @endforeach
                 <tr>
-                  <td colspan="8">{{$grafikPeserta->links()}}</td>
+                  <td colspan="10">{{$grafikPeserta->links()}}</td>
                 </tr>
               </tbody>
             </table>
